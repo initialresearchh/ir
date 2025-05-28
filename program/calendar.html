@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - Initial Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--cms-->
+    <script src="/content-loader.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- Import shared navigation styles and scripts -->
+    <link rel="stylesheet" href="../css/navigation.css">
+    <script src="../js/navigation.js"></script>
+    <link rel="stylesheet" href="../css/calendar.css">
+</head>
+<body>
+    <!-- Store colors in data attributes -->
+    <div class="rectangle-colors" 
+         data-colors='["rgb(51, 25, 0)",  "#3b2b1d", "rgb(70, 0, 0)",  "#3b2b1d", "rgb(39, 39, 39)", "rgb(59, 40, 40)"]'>
+    </div>
+    
+    <!-- Rectangle container for hover effect and detailed view -->
+    <div class="rectangle-container">
+        <div class="hover-rectangle" id="rectangle-1">
+            <div class="event-title">
+                <h2>The Girl with a Pistol</h2>
+                <h3>screening</h3>
+            </div>
+            <img src="img/upcomings/1.jpg" alt="The Girl with a Pistol" class="event-image">
+            <div class="event-date">
+                <div class="time-container">
+                    <p>March 29th Saturday 2025</p>
+                    <p>2pm to 6pm</p>
+                </div>
+                <button class="rsvp-button">RSVP</button>
+            </div>
+        </div>
+        
+        <div class="event-detail-view" id="event-details">
+            <button class="close-button" id="close-detail">✕</button>
+            <div class="event-title">
+                <h2 id="detail-title">Event Title</h2>
+                <h3 id="detail-subtitle">subtitle</h3>
+            </div>
+            <img id="detail-image" src="img/upcomings/1.jpg" alt="Event Image" class="event-image">
+            <div class="event-date">
+                <div class="time-container">
+                    <p id="detail-date">Date</p>
+                    <p id="detail-time">Time</p>
+                </div>
+                <button class="rsvp-button" id="rsvp-button">RSVP</button>
+            </div>
+            <div class="event-description">
+                <p id="detail-description">Event description will appear here.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile popup overlay -->
+    <div class="mobile-popup-overlay" id="mobile-popup-overlay">
+        <div class="mobile-popup-content" id="mobile-popup-content">
+            <button class="mobile-close-button" id="mobile-close-button">✕</button>
+            <div class="event-title">
+                <h2 id="mobile-detail-title">Event Title</h2>
+                <h3 id="mobile-detail-subtitle">subtitle</h3>
+            </div>
+            <img id="mobile-detail-image" src="img/upcomings/1.jpg" alt="Event Image" class="event-image">
+            <div class="event-date">
+                <p id="mobile-detail-date">Date</p>
+                <p id="mobile-detail-time">Time</p>
+            </div>
+            <div class="event-description">
+                <p id="mobile-detail-description">Event description will appear here.</p>
+            </div>
+            <button class="rsvp-button" id="mobile-rsvp-button">RSVP</button>
+        </div>
+    </div>
+    
+    <!-- Content area with toggle switch -->
+    <div class="content">
+        <div class="section-header">
+            <h2 class="section-heading" id="section-title">upcoming</h2>
+            <div class="tab-container">
+                <div class="tab active" id="upcoming-tab">Upcoming</div>
+                <div class="tab inactive" id="past-tab">Past</div>
+            </div>
+        </div>
+        
+        <div id="upcoming-container">
+            <table class="programs-table" id="upcoming-table">
+                <tbody>
+                    <!-- Table will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <p class="no-events" id="no-upcoming" style="display: none;">No upcoming events scheduled.</p>
+        </div>
+        
+        <div id="past-container" style="display: none;">
+            <table class="programs-table" id="past-table">
+                <tbody>
+                    <!-- Table will be populated by JavaScript -->
+                </tbody>
+            </table>
+            <p class="no-events" id="no-past" style="display: none;">No past events to display.</p>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript -->
+    <script src="../js/calendar.js"></script>
+</body>
+</html>

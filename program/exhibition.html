@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initial Research - Exhibition</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Netlify CMS Scripts -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- Import navigation and exhibition styles -->
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/exhibition.css">
+    
+    <!-- Import scripts -->
+    <script src="../js/navigation.js"></script>
+    <script src="../js/exhibition.js"></script>
+</head>
+<body>
+    <!-- Top banner with title and navigation -->
+   
+    
+    <!-- Exhibition content -->
+    <div class="content">
+        <!-- Left sidebar -->
+        <div class="sidebar">
+            <!-- Empty sidebar -->
+        </div>
+        
+        <!-- Main content area - This will be filled with data from CMS -->
+        <div class="main-content" id="exhibition-content">
+            <!-- Content will be loaded from exhibition-data.json -->
+            <div class="loading-message"></div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+
+    
+    <!-- Lightbox for enlarged images -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img src="" alt="Enlarged image" id="lightbox-img" onclick="event.stopPropagation()">
+    </div>
+    
+    
+    <!-- Netlify CMS Authentication Script -->
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

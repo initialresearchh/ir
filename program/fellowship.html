@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellowship - Inaugural Cohort</title>
+     <!-- Google Font - Space Grotesk -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <script src="/content-loader.js"></script>
+     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
+     <link rel="stylesheet" href="../css/navigation.css">
+    <script src="../js/navigation.js"></script>
+
+    <style>
+        /* Content area - updated for fixed header */
+        .content {
+            padding: 120px 48px 64px 48px;
+            max-width: none; /* Remove max-width constraint */
+            margin: 0; /* Remove auto centering */
+            position: relative;
+            z-index: 2;
+            flex:1;
+            width: 100%; /* Explicitly set to 100% */
+            box-sizing: border-box; /* Include padding in width calculation */
+            padding-bottom: 80px; /* Prevents footer from overlapping content */
+        }
+        
+        /* Loading message */
+        .loading-message {
+            font-size: 16px;
+            color: #666;
+            margin: 20px 0;
+        }
+        
+        /* Intro container */
+        .intro-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 120px; /* Fixed instead of 15vh */
+            margin-top: 40px; /* Fixed instead of 5vh */
+            width: 100%;
+        }
+        
+        .intro-left {
+            width: 50%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .intro-right {
+            width: 50%;
+        }
+        
+        /* Section title */
+        .section-heading {
+            font-size: 43px; /* Matching exhibition page */
+            font-weight: 400; /* Matching exhibition page */
+            margin: 0 0 80px 0; /* Fixed instead of 10vh */
+            line-height: 1.2;
+        }
+        
+        /* Main Headline */
+        .main-headline {
+            font-size: 43px; /* Matching exhibition page */
+            font-weight: 400; /* Matching exhibition page */
+            text-align: left; /* Changed from center to left */
+            line-height: 1;
+            color: rgb(23, 23, 23); /* Matching exhibition page */
+        }
+        
+        /* Fellowship intro */
+        .fellowship-intro {
+            width: 100%;
+            margin-bottom: 0px; /* Fixed instead of 0vh */
+            margin-top: 56px; /* Fixed instead of 7vh */
+            font-size: 17px; /* Matching exhibition page */
+            justify-self: center;
+            line-height: 1.6; /* Better readability */
+            font-weight: 300;
+        }
+        
+        /* Cohort section */
+        .cohort-section {
+            margin-bottom: 120px;
+        }
+        
+        /* Fellows table */
+        .fellows-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 5rem;
+            table-layout: fixed; /* Ensure table uses full width */
+            box-sizing: border-box; /* Include any borders in width */
+        }
+        
+        .fellows-table tr.fellow-row {
+            transition: background-color 0.2s ease;
+            position: relative;
+            cursor: pointer;
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+        }
+        
+        .fellows-table tr.fellow-row:hover {
+            background-color: rgb(115, 115, 115);
+            color: white;
+        }
+        
+        /* Active state for fellow row */
+        .fellows-table tr.fellow-row.active {
+            background-color: rgb(70, 70, 70);
+            color: white;
+        }
+        
+        .fellows-table td {
+            padding: 15px 16px; /* Fixed instead of 1.5vh 1vw */
+            vertical-align: top;
+            border-bottom: 1px solid rgb(43, 43, 43);
+        }
+        
+        .fellow-number {
+            width: 10%;
+            font-size: 16px;
+        }
+        
+        .fellow-name {
+            width: 90%;
+            font-size: 18px;
+        }
+        
+        /* Expandable content styles */
+        .expanded-row {
+            display: none;
+            background-color: rgba(200, 200, 200, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .expanded-row.active {
+            display: table-row;
+        }
+        
+        .expanded-content {
+            display: flex;
+            padding: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: all 0.5s ease;
+            background-color: white;
+            position: relative;
+        }
+        
+        .expanded-content.active {
+            padding: 30px;
+            max-height: 800px;
+        }
+        
+        .expanded-cell {
+            padding: 0 !important;
+            border-bottom: none !important;
+        }
+        
+        .expanded-left {
+            width: 50%;
+            padding-right: 30px;
+            box-sizing: border-box;
+        }
+        
+        .expanded-right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .expanded-title {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+            font-weight: 500;
+        }
+        
+        .expanded-subtitle {
+            font-size: 18px;
+            margin: 0 0 20px 0;
+            font-weight: 300;
+        }
+        
+        .expanded-text {
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .expanded-projects h4 {
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            font-weight: 500;
+        }
+        
+        .project-title {
+            font-size: 16px;
+            margin: 0 0 5px 0;
+            font-weight: 400;
+        }
+        
+        .project-description {
+            font-size: 14px;
+            line-height: 1.5;
+            font-weight: 300;
+        }
+        
+        .expanded-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(200, 200, 200, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(150, 150, 150, 0.8);
+        }
+        
+        h2.section-heading {
+            margin-top: 80px;   /* Fixed instead of 10vh */
+            margin-bottom: 40px; /* Fixed instead of 5vh */
+        }
+        
+        /* Carousel styling */
+        .image-carousel {
+            position: relative;
+            width: 100%;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .carousel-slide {
+            display: none;
+            text-align: center;
+        }
+        
+        .carousel-slide.active {
+            display: block;
+        }
+        
+        .carousel-slide img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            gap: 8px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(23, 23, 23, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background-color: rgb(23, 23, 23);
+        }
+        
+        .photo-credit {
+            font-size: 12px;
+            margin-top: 8px;
+            color: rgb(100, 100, 100);
+            font-style: italic;
+            font-weight: 300;
+        }
+        
+        .single-image-container {
+            text-align: center;
+        }
+        
+        .single-image-container img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+        
+        /* Mobile styling */
+        @media (max-width: 768px) {
+            .content {
+                padding: 15vh 3vw 4vw 3vw; 
+                padding-left:24px;
+            } 
+            
+            .section-heading {
+                font-size: 24px;
+            }
+            
+            .main-headline {
+                font-size: 28px;
+            }
+            
+            .intro-container {
+                flex-direction: column;
+                margin-bottom: 8vh;
+            }
+            
+            .intro-left, .intro-right {
+                width: 100%;
+                margin-bottom: 4vh;
+            }
+            
+            .fellowship-intro {
+                font-size: 16px;
+            }
+                
+            .fellow-number {
+                font-size: 16px;
+            }
+            
+            .fellow-name {
+                font-size: 16px;
+            }
+            
+            .expanded-content.active {
+                flex-direction: column;
+                max-height: none ;
+            }
+            
+            .expanded-left, .expanded-right {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .expanded-right {
+                margin-top: 20px;
+            }
+            
+            .photo-credit {
+                font-size: 11px;
+                text-align: center;
+            }
+            
+            .carousel-dots {
+                margin-top: 10px;
+            }
+            
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .expanded-title {
+                font-size: 24px;
+            }
+            
+            .expanded-subtitle {
+                font-size: 18px;
+            }
+            
+            .expanded-text {
+                font-size: 16px;
+            }
+            
+            .expanded-projects h4 {
+                font-size: 18px;
+            }
+            
+            .project-title {
+                font-size: 16px;
+            }
+            
+            .project-description {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>    
+    <!-- Navigation will be loaded by navigation.js -->
+    
+    <!-- Content area with fellowship info and cohort -->
+    <div class="content" id="fellowship-content">
+        <div class="loading-message">Loading fellowship data...</div>
+    </div>
+    
+    <!-- Footer will be loaded by navigation.js -->
+   
+    <script>
+        function goToHomepage() {
+            window.location.href = '../index.html';
+        }
+        
+        // Load fellowship data from JSON
+        async function loadFellowshipData() {
+            try {
+                console.log('Loading fellowship data...');
+                console.log('Current page location:', window.location.pathname);
+                
+                const possiblePaths = [
+                    '/fellowship-data.json',     // Try absolute path first  
+                    './fellowship-data.json',
+                    '../fellowship-data.json', 
+                    'fellowship-data.json'
+                ];
+                
+                let response;
+                for (const path of possiblePaths) {
+                    try {
+                        console.log(`Trying path: ${path}`);
+                        const tempResponse = await fetch(path);
+                        if (tempResponse.ok) {
+                            response = tempResponse;
+                            console.log(`✓ Loaded fellowship data from: ${path}`);
+                            break;
+                        } else {
+                            console.log(`✗ Failed to load ${path} - Status: ${tempResponse.status}`);
+                        }
+                    } catch (err) {
+                        console.log(`✗ Error loading ${path}:`, err.message);
+                    }
+                }
+                
+                if (!response || !response.ok) {
+                    console.log('Could not load fellowship data, using static content');
+                    renderStaticContent();
+                    return;
+                }
+                
+                const data = await response.json();
+                console.log('Fellowship data loaded:', data);
+                
+                renderFellowshipContent(data);
+                
+            } catch (error) {
+                console.error('Error loading fellowship data:', error);
+                renderStaticContent();
+            }
+        }
+        
+        function renderFellowshipContent(data) {
+            console.log('Rendering fellowship content with data:', data);
+            
+            // Update page title
+            if (data.title) document.title = data.title;
+            
+            const container = document.getElementById('fellowship-content');
+            let html = '';
+            
+            // Intro section
+            html += `
+                <div class="intro-container">
+                    <div class="intro-left">
+                        <h1 class="main-headline">${data.heading || 'Fellowship'}</h1>
+                    </div>
+                    <div class="intro-right">
+                        <div class="fellowship-intro">
+                            <p>${formatMarkdownText(data.intro || '')}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Render cohorts
+            if (data.cohorts && data.cohorts.length > 0) {
+                // Sort cohorts by order
+                const sortedCohorts = data.cohorts
+                    .filter(cohort => cohort.show_cohort !== false)
+                    .sort((a, b) => (a.order || 999) - (b.order || 999));
+                
+                sortedCohorts.forEach(cohort => {
+                    html += `
+                        <div class="cohort-section">
+                            <h2 class="section-heading">${cohort.cohort_title || 'Cohort'}</h2>
+                            <table class="fellows-table" id="cohort-${cohort.order || 1}">
+                                <tbody>
+                    `;
+                    
+                    if (cohort.fellows && cohort.fellows.length > 0) {
+                        cohort.fellows.forEach(fellow => {
+                            html += renderFellowRow(fellow);
+                        });
+                    }
+                    
+                    html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                });
+            }
+            
+            container.innerHTML = html;
+            
+            // Initialize functionality after rendering
+            setTimeout(() => {
+                initializeFellowshipFunctionality();
+                initCarousels();
+            }, 100);
+        }
+        
+        function renderFellowRow(fellow) {
+            let html = `
+                <!-- ${fellow.name} -->
+                <tr class="fellow-row" data-fellow-id="${fellow.id}">
+                    <td class="fellow-number">${fellow.number}</td>
+                    <td class="fellow-name">${fellow.name}</td>
+                </tr>
+                <tr class="expanded-row" id="${fellow.id}-row">
+                    <td colspan="2" class="expanded-cell">
+                        <div class="expanded-content" id="${fellow.id}-content">
+                            <div class="expanded-left">
+                                <h3 class="expanded-title">${fellow.name}</h3>
+                                ${fellow.fellow_title ? `<div class="expanded-subtitle">${fellow.fellow_title}</div>` : ''}
+                                <div class="expanded-text">
+                                    ${formatMarkdownText(fellow.bio || '')}
+                                </div>
+                            </div>
+                            <div class="expanded-right">
+                                ${renderFellowImage(fellow)}
+                            </div>
+                            <button class="close-btn">&times;</button>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            return html;
+        }
+        
+        function renderFellowImage(fellow) {
+            if (fellow.image_type === 'carousel' && fellow.additional_images && fellow.additional_images.length > 0) {
+                // Carousel with multiple images
+                let html = `
+                    <div class="image-carousel" data-carousel="${fellow.id}">
+                        <div class="carousel-container">
+                `;
+                
+                // First image
+                html += `
+                    <div class="carousel-slide active">
+                        <img src="${fellow.image}" alt="${fellow.name}" class="expanded-image">
+                        <div class="photo-credit">${fellow.caption || ''}</div>
+                    </div>
+                `;
+                
+                // Additional images
+                fellow.additional_images.forEach(img => {
+                    html += `
+                        <div class="carousel-slide">
+                            <img src="${img.src}" alt="${fellow.name}" class="expanded-image">
+                            <div class="photo-credit">${img.caption || ''}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                        <div class="carousel-dots">
+                `;
+                
+                // Dots for main image + additional images
+                const totalImages = 1 + (fellow.additional_images ? fellow.additional_images.length : 0);
+                for (let i = 0; i < totalImages; i++) {
+                    html += `<div class="carousel-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide('${fellow.id}', ${i})"></div>`;
+                }
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+                
+                return html;
+            } else {
+                // Single image
+                return `
+                    <div class="single-image-container">
+                        ${fellow.image ? `<img src="${fellow.image}" alt="${fellow.name}" class="expanded-image">` : ''}
+                        ${fellow.caption ? `<div class="photo-credit">${fellow.caption}</div>` : ''}
+                    </div>
+                `;
+            }
+        }
+        
+        function formatMarkdownText(text) {
+            if (!text) return '';
+            
+            // Convert markdown to HTML
+            let html = text
+                // Bold text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                // Links
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+                // Line breaks
+                .split('\n\n')
+                .map(paragraph => paragraph.trim() ? `<p>${paragraph}</p>` : '')
+                .join('');
+            
+            return html;
+        }
+        
+        function renderStaticContent() {
+            console.log('Rendering static fellowship content');
+            const container = document.getElementById('fellowship-content');
+            container.innerHTML = `
+                <div class="intro-container">
+                    <div class="intro-left">
+                        <h1 class="main-headline">Fellowship</h1>
+                    </div>
+                    <div class="intro-right">
+                        <div class="fellowship-intro">
+                            <p>Initial Research is a meeting space for creative talents, fostering a continuous exchange of experiences and ideas. At its core, the Initial Research Fellowship provides a select group of creatives with the resources to pursue a self-directed, yearlong research project. Fellows receive access to office and project space, where they develop their work through a series of gatherings, including workshops, lectures, screenings, and reading groups. Each participant will present their research internally and will organize public-facing events.</p>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="section-heading">Fellowship Program</h2>
+                <div class="expanded-text">
+                    <p>Fellowship data is currently being loaded. Please check back soon for information about our current cohort.</p>
+                </div>
+            `;
+        }
+        
+        // Carousel management
+        const carousels = new Map();
+        let carouselIntervals = new Map();
+        
+        // Initialize all carousels
+        function initCarousels() {
+            const carouselElements = document.querySelectorAll('.image-carousel');
+            carouselElements.forEach(carousel => {
+                initSpecificCarousel(carousel);
+            });
+        }
+        
+        // Initialize a specific carousel
+        function initSpecificCarousel(carouselElement) {
+            const carouselId = carouselElement.dataset.carousel;
+            if (!carouselId) return;
+            
+            const slides = carouselElement.querySelectorAll('.carousel-slide');
+            const dots = carouselElement.querySelectorAll('.carousel-dot');
+            
+            if (slides.length <= 1) return; // Don't initialize carousel for single images
+            
+            // Initialize carousel state
+            carousels.set(carouselId, {
+                currentSlide: 0,
+                totalSlides: slides.length,
+                element: carouselElement
+            });
+            
+            // Show first slide
+            updateCarousel(carouselId);
+            
+            // Start auto-swipe
+            startAutoSwipe(carouselId);
+        }
+        
+        // Update carousel display
+        function updateCarousel(carouselId) {
+            const carousel = carousels.get(carouselId);
+            if (!carousel) return;
+            
+            const slides = carousel.element.querySelectorAll('.carousel-slide');
+            const dots = carousel.element.querySelectorAll('.carousel-dot');
+            
+            // Update slides
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === carousel.currentSlide);
+            });
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentSlide);
+            });
+        }
+        
+        // Start auto-swipe for a carousel
+        function startAutoSwipe(carouselId) {
+            const carousel = carousels.get(carouselId);
+            if (!carousel || carousel.totalSlides <= 1) return;
+            
+            // Clear existing interval
+            pauseAutoSwipe(carouselId);
+            
+            // Set new interval (change slide every 4 seconds)
+            const interval = setInterval(() => {
+                carousel.currentSlide = (carousel.currentSlide + 1) % carousel.totalSlides;
+                updateCarousel(carouselId);
+            }, 4000);
+            
+            carouselIntervals.set(carouselId, interval);
+        }
+        
+        // Pause auto-swipe for a carousel
+        function pauseAutoSwipe(carouselId) {
+            const interval = carouselIntervals.get(carouselId);
+            if (interval) {
+                clearInterval(interval);
+                carouselIntervals.delete(carouselId);
+            }
+        }
+        
+        // Pause all carousels
+        function pauseAllCarousels() {
+            carouselIntervals.forEach((interval, carouselId) => {
+                clearInterval(interval);
+            });
+            carouselIntervals.clear();
+        }
+        
+        // Global function for carousel navigation (needed for onclick handlers)
+        function goToSlide(carouselId, slideIndex) {
+            const carousel = carousels.get(carouselId);
+            if (!carousel) return;
+            
+            carousel.currentSlide = slideIndex;
+            updateCarousel(carouselId);
+            
+            // Restart auto-swipe after manual navigation
+            pauseAutoSwipe(carouselId);
+            startAutoSwipe(carouselId);
+        }
+        
+        function initializeFellowshipFunctionality() {
+            // Get all fellow rows that should be clickable
+            const fellowRows = document.querySelectorAll('.fellow-row');
+            
+            // Store the state of expanded rows
+            let activeExpansion = null;
+            
+            // Add click event to toggle expanded content
+            fellowRows.forEach((row) => {
+                row.addEventListener('click', function(event) {
+                    // Don't expand if clicking on carousel dots or images
+                    if (event.target.closest('.carousel-dot') || event.target.closest('.image-carousel')) {
+                        return;
+                    }
+                    
+                    const fellowId = this.getAttribute('data-fellow-id');
+                    if (!fellowId) return;
+                    
+                    // Find the expanded row and content
+                    const expandedRow = document.getElementById(`${fellowId}-row`);
+                    const expandedContent = document.getElementById(`${fellowId}-content`);
+                    
+                    if (!expandedRow || !expandedContent) {
+                        return;
+                    }
+                    
+                    // Check if this row is already active
+                    const isActive = this.classList.contains('active');
+                    
+                    // Remove active class from all fellow rows
+                    document.querySelectorAll('.fellow-row.active').forEach(row => {
+                        row.classList.remove('active');
+                    });
+                    
+                    // Close all expanded contents
+                    document.querySelectorAll('.expanded-row.active').forEach(row => {
+                        row.classList.remove('active');
+                        const content = row.querySelector('.expanded-content');
+                        if (content) content.classList.remove('active');
+                    });
+                    
+                    // Pause all carousels when closing
+                    pauseAllCarousels();
+                    
+                    // If this row wasn't active before, open it
+                    if (!isActive) {
+                        // Add active class to the clicked row
+                        this.classList.add('active');
+                        
+                        // Show the expanded content row
+                        expandedRow.classList.add('active');
+                        expandedContent.classList.add('active');
+                        
+                        // Update active expansion
+                        activeExpansion = fellowId;
+                        
+                        // Initialize carousels for the newly opened fellow and scroll
+                        setTimeout(() => {
+                            // Re-initialize carousels for the newly expanded content
+                            const newCarousels = expandedContent.querySelectorAll('.image-carousel');
+                            newCarousels.forEach(carousel => {
+                                initSpecificCarousel(carousel);
+                            });
+                            scrollToExpandedContent(expandedRow);
+                        }, 100);
+                    } else {
+                        // This row was active, so we closed it
+                        activeExpansion = null;
+                    }
+                    
+                    // Prevent the event from propagating to document click handler
+                    event.stopPropagation();
+                });
+            });
+            
+            // Handle close button clicks
+            const closeButtons = document.querySelectorAll('.close-btn');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    const expandedContent = this.closest('.expanded-content');
+                    if (!expandedContent) return;
+                    
+                    // Find the fellow row
+                    const fellowId = expandedContent.id.replace('-content', '');
+                    const fellowRow = document.querySelector(`.fellow-row[data-fellow-id="${fellowId}"]`);
+                    
+                    if (fellowRow) {
+                        fellowRow.classList.remove('active');
+                    }
+                    
+                    // Close the expanded content
+                    expandedContent.classList.remove('active');
+                    const expandedRow = expandedContent.closest('.expanded-row');
+                    if (expandedRow) {
+                        expandedRow.classList.remove('active');
+                    }
+                    
+                    // Reset active expansion
+                    activeExpansion = null;
+                    
+                    // Pause all carousels
+                    pauseAllCarousels();
+                    
+                    // Prevent the event from propagating
+                    event.stopPropagation();
+                });
+            });
+            
+            // Smooth scrolling to expanded content when opened
+            function scrollToExpandedContent(expandedRow) {
+                if (!expandedRow.classList.contains('active')) return;
+                
+                // Calculate the position to scroll to (slightly above the expanded row for better visibility)
+                const rect = expandedRow.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const targetY = rect.top + scrollTop - 100; // 100px offset from the top
+                
+                // Smooth scroll to the target position
+                window.scrollTo({
+                    top: targetY,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for navigation to load, then load fellowship data
+            setTimeout(() => {
+                loadFellowshipData();
+            }, 200);
+        });
+
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>

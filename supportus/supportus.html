@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us</title>
+    
+    <!-- Google Font - Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <!-- Netlify CMS Integration -->
+     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+     <!-- Import navigation styles and scripts -->
+     <link rel="stylesheet" href="../css/navigation.css">
+     <script src="../js/navigation.js"></script>
+   <style>
+       body {
+           margin: 0;
+           padding: 0;
+           font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+           line-height: 1;
+           background-color: rgb(235, 235, 235);
+           position: relative;
+           min-height: 100vh;
+           overflow-x: hidden;
+           display: flex;
+           flex-direction: column;
+           width: 100%;
+       }
+       
+        /* Content area - updated for fixed header */
+        .content {
+            padding: 120px 48px 100px 48px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            width:50%;
+        }
+
+        /* Loading message */
+        .loading-message {
+            font-size: 16px;
+            color: #666;
+            margin: 20px 0;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .section:not(:last-child) {
+            border-bottom: 1px solid rgb(43, 43, 43);
+            padding-bottom: 60px;
+        }
+
+        /* Section headers */
+        .section h2 {
+            font-size: 43px;
+            font-weight: 400;
+            margin-bottom: 60px;
+            line-height: 1.2;
+            text-transform: none;
+            text-align: left;
+            color: rgb(23, 23, 23);
+        }
+
+        /* Subheaders styling */
+        .section h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin: 40px 0 24px 0;
+            line-height: 1.3;
+        }
+
+        /* Text styling */
+        .section p {
+            font-size: 17px;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 24px;
+            width: 100%;
+        }
+
+        /* Patron level styling */
+        .patron-levels {
+            margin: 24px 0;
+            width: 100%;
+        }
+
+        .patron-level {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(43, 43, 43, 0.2);
+        }
+
+        .patron-level:last-child {
+            border-bottom: none;
+        }
+
+        .patron-name {
+            font-size: 17px;
+            font-weight: 300;
+        }
+
+        .patron-amount {
+            font-size: 17px;
+            font-weight: 300;
+        }
+
+        /* Donor board styling */
+        .donor-category {
+            margin-bottom: 40px;
+        }
+
+        .donor-list {
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        /* Contact links */
+        a {
+            color: rgb(43, 43, 43);
+            text-decoration: none;
+            
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: rgb(241, 61, 33);
+            border-color: rgb(241, 61, 33);
+        }
+
+        /* Footer styling */
+        footer {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(180, 180, 180);
+            padding: 10px 0;
+            text-align: center;
+            font-family: 'Space Grotesk', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgb(23, 23, 23);
+            z-index: 1000;
+            margin-top: auto;
+        }
+
+        /* Mobile styling */
+        @media (max-width: 768px) {
+            /* Content adjustments for mobile - align with title */
+            .content {
+                padding-left: 24px;
+                padding-right: 24px;
+                padding-top: 105px;
+                padding-bottom: 24px;
+                width: calc(100%); /* Full width minus left and right padding */
+            }
+            
+            .section h2 {
+                font-size: 28px;
+            }
+        }
+        
+        /* Auto-switch to desktop when screen is larger than 768px */
+        @media (min-width: 769px) {
+          
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be loaded here -->
+   
+    <!-- Main content -->
+    <div class="content" id="support-content">
+        <div class="loading-message">Loading support information...</div>
+    </div>
+
+ 
+
+    <script>
+        async function loadSupportData() {
+            try {
+                console.log('Loading support data...');
+                
+                // Try different possible paths
+                const possiblePaths = [
+                    './supportus-data.json',
+                    '../supportus-data.json',
+                    '/supportus-data.json',
+                    'supportus-data.json'
+                ];
+                
+                let response;
+                for (const path of possiblePaths) {
+                    try {
+                        const tempResponse = await fetch(path);
+                        if (tempResponse.ok) {
+                            response = tempResponse;
+                            console.log(`Found support data at: ${path}`);
+                            break;
+                        }
+                    } catch (err) {
+                        console.log(`Failed to load from ${path}`);
+                    }
+                }
+                
+                if (!response || !response.ok) {
+                    throw new Error('Could not load support data');
+                }
+                
+                const data = await response.json();
+                console.log('Loaded support data:', data);
+                
+                // Update page title
+                if (data.page_title) {
+                    document.title = data.page_title;
+                }
+                
+                renderSupportContent(data);
+                
+            } catch (error) {
+                console.error('Error loading support data:', error);
+                renderStaticContent();
+            }
+        }
+        
+        function renderSupportContent(data) {
+            const container = document.getElementById('support-content');
+            let html = '';
+            
+            // Support Section
+            if (data.support_section) {
+                html += `
+                    <div class="section">
+                        <h2>${data.support_section.title || 'Support'}</h2>
+                        ${formatMarkdownText(data.support_section.intro || '')}
+                    </div>
+                `;
+            }
+            
+            // Patron Levels Section
+            if (data.patron_levels) {
+                html += `
+                    <div class="section">
+                        <h2>${data.patron_levels.title || 'Patron Levels'}</h2>
+                        <div class="patron-levels">
+                `;
+                
+                if (data.patron_levels.levels && data.patron_levels.levels.length > 0) {
+                    data.patron_levels.levels.forEach(level => {
+                        html += `
+                            <div class="patron-level">
+                                <div class="patron-name">${level.name || ''}</div>
+                                <div class="patron-amount">${level.amount || ''}</div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // How to Support Section
+            if (data.how_to_support) {
+                html += `
+                    <div class="section">
+                        <h2>${data.how_to_support.title || 'How to Support'}</h2>
+                        ${formatMarkdownText(data.how_to_support.content || '')}
+                    </div>
+                `;
+            }
+            
+            // Donor Recognition Section
+            if (data.donor_recognition) {
+                html += `
+                    <div class="section">
+                        <h2>${data.donor_recognition.title || 'Donor Recognition'}</h2>
+                `;
+                
+                if (data.donor_recognition.categories && data.donor_recognition.categories.length > 0) {
+                    data.donor_recognition.categories.forEach(category => {
+                        html += `
+                            <div class="donor-category">
+                                <h3>${category.name || ''}</h3>
+                                <div class="donor-list">${category.donors || ''}</div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                html += `
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function formatMarkdownText(text) {
+            if (!text) return '';
+            
+            // Convert markdown to HTML
+            let html = text
+                // Bold text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                // Links
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+                // Line breaks
+                .split('\n\n')
+                .map(paragraph => paragraph.trim() ? `<p>${paragraph}</p>` : '')
+                .join('');
+            
+            return html;
+        }
+        
+        function renderStaticContent() {
+            const container = document.getElementById('support-content');
+            container.innerHTML = `
+                <div class="section">
+                    <h2>Support</h2>
+                    <p>Initial Research is a non-profit organization dedicated to fostering critical dialogue and creative practice. Your support enables us to continue our mission of supporting emerging artists, facilitating meaningful cultural exchanges, and creating spaces for important conversations.</p>
+                    <p>As an independent arts organization, we rely on the generosity of individuals, foundations, and community partners to sustain our programs and initiatives.</p>
+                </div>
+                
+                <div class="section">
+                    <h2>Patron Levels</h2>
+                    <div class="patron-levels">
+                        <div class="patron-level">
+                            <div class="patron-name">Friend</div>
+                            <div class="patron-amount">$100</div>
+                        </div>
+                        <div class="patron-level">
+                            <div class="patron-name">Supporter</div>
+                            <div class="patron-amount">$250</div>
+                        </div>
+                        <div class="patron-level">
+                            <div class="patron-name">Advocate</div>
+                            <div class="patron-amount">$500</div>
+                        </div>
+                        <div class="patron-level">
+                            <div class="patron-name">Patron</div>
+                            <div class="patron-amount">$1,000</div>
+                        </div>
+                        <div class="patron-level">
+                            <div class="patron-name">Sustaining Patron</div>
+                            <div class="patron-amount">$2,500</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>How to Support</h2>
+                    <p><strong>Make a Donation</strong></p>
+                    <p>To make a tax-deductible donation, please contact us at <a href="mailto:support@initialresearch.org">support@initialresearch.org</a> or send a check made payable to "Initial Research" to our mailing address.</p>
+                    
+                    <p><strong>Corporate Partnerships</strong></p>
+                    <p>We welcome partnerships with organizations that share our commitment to supporting arts and culture. Contact us to discuss collaboration opportunities.</p>
+                    
+                    <p><strong>Volunteer</strong></p>
+                    <p>Join our community of volunteers who help make our programs possible. We welcome support with events, administration, and outreach.</p>
+                </div>
+                
+                <div class="section">
+                    <h2>Donor Recognition</h2>
+                    <div class="donor-category">
+                        <h3>Founding Patrons ($2,500+)</h3>
+                        <div class="donor-list">Anonymous, Jane Smith Foundation, The Miller Family Trust</div>
+                    </div>
+                    
+                    <div class="donor-category">
+                        <h3>Sustaining Patrons ($1,000+)</h3>
+                        <div class="donor-list">Alex Chen, Maria Rodriguez, David Park, Sarah Johnson</div>
+                    </div>
+                    
+                    <div class="donor-category">
+                        <h3>Patrons ($500+)</h3>
+                        <div class="donor-list">Lisa Wong, Michael Brown, Jennifer Kim, Robert Davis, Emma Wilson, James Lee</div>
+                    </div>
+                    
+                    <div class="donor-category">
+                        <h3>Supporters ($250+)</h3>
+                        <div class="donor-list">Amy Zhang, Chris Taylor, Nicole Adams, Kevin Liu, Rachel Green, Tom Anderson, Laura Martinez, Sam Cooper</div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Homepage navigation function
+        function goToHomepage() {
+            window.location.href = '../index.html';
+        }
+
+        // Mobile navigation functions
+        function toggleMobileNav() {
+            const mobileNav = document.getElementById('mobileNav');
+            
+            if (mobileNav.style.display === 'flex' || mobileNav.classList.contains('show')) {
+                mobileNav.style.display = 'none';
+                mobileNav.classList.remove('show');
+                // Close all mobile dropdowns when closing nav
+                const allMobileNavItems = document.querySelectorAll('.mobile-nav-item');
+                allMobileNavItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            } else {
+                mobileNav.style.display = 'flex';
+                mobileNav.classList.add('show');
+            }
+        }
+        
+        // Mobile dropdown toggle
+        function toggleMobileDropdown(event, element) {
+            event.preventDefault();
+            const navItem = element.parentElement;
+            
+            // Check if this nav item has a dropdown
+            const dropdown = navItem.querySelector('.mobile-dropdown');
+            if (!dropdown) {
+                // If no dropdown, it's a regular link - handle navigation here if needed
+                return;
+            }
+            
+            // Close all other mobile dropdowns
+            const allMobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            allMobileNavItems.forEach(item => {
+                if (item !== navItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current dropdown
+            navItem.classList.toggle('active');
+        }
+
+        // Auto-handle screen resize
+        window.addEventListener('resize', function() {
+            const mobileNav = document.getElementById('mobileNav');
+            const allMobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            
+            // If resizing to desktop width, close mobile nav
+            if (window.innerWidth > 768) {
+                mobileNav.style.display = 'none';
+                mobileNav.classList.remove('show');
+                allMobileNavItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load support data
+            loadSupportData();
+            
+            // Desktop dropdown toggle functionality
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('a');
+                const dropdown = item.querySelector('.dropdown');
+                
+                if (dropdown) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Close all other dropdowns
+                        navItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                const isNavClick = e.target.closest('.nav-item');
+                const isMobileNavClick = e.target.closest('.mobile-nav');
+                
+                if (!isNavClick && !isMobileNavClick) {
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+                }
+            });
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            const mobileNav = document.getElementById('mobileNav');
+            const hamburger = document.querySelector('.hamburger-menu');
+            
+            if (hamburger && !hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.style.display = 'none';
+                mobileNav.classList.remove('show');
+                // Close all mobile dropdowns when clicking outside
+                const allMobileNavItems = document.querySelectorAll('.mobile-nav-item');
+                allMobileNavItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
+        });
+
+        // Netlify CMS Authentication Script
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
