@@ -2,16 +2,16 @@
   "title": "Calendar - Initial Research",
   "events": [
     {
-      "date": "2025-05-20T23:59:59-04:00",
-      "displayDate": "05.20.25",
-      "timeDisplay": "6pm to 9pm",
-      "rsvpLink": "https://example.com/rsvp/summer-exhibition",
-      "subtitle": "exhibition",
-      "title": "Summer Exhibition Opening",
-      "link": "exhibition.html?id=the-universe-principle-is-love-2025",
+      "date": "2025-06-03T11:59:59+08:00",
+      "displayDate": "06.03.25",
+      "timeDisplay": "1pm to 5pm",
+      "rsvpLink": "",
+      "subtitle": "Community Hours",
+      "title": "Community Hours",
+      "link": "",
       "id": 1,
-      "image": "img/upcomings/1.jpg",
-      "description": "Join us for the opening reception of our Summer Exhibition featuring works by emerging artists exploring themes of ecology, community, and speculative futures. The exhibition brings together paintings, sculptures, video installations, and interactive works that envision alternative ways of being in relation to our environment and each other. Refreshments will be served."
+      "image": "",
+      "description": "Join us on Tuesday, from 1 pm- 5 pm, during our weekly community hours at IR. The space is open for work, meetings, and intimate weekday programs. WiFi, a growing book collection, and tea are all provided. No RSVP required, stop by and say hi!"
     },
     {
       "date": "2025-05-25T23:59:59-04:00",
