@@ -1,14 +1,14 @@
 {
   "mission": {
     "title": "Mission",
-    "content": "We are a nonprofit arts organization based in New York City. Founded by Asian female curators, we committed to supporting early-stage artistic research and fostering cross-cultural exchange through fellowships and thematic public programs.\n\nOur core initiative is a fellowship program that supports five groups of individuals engaged in contemporary cultural discourses and practices. This program provides a dedicated space for artists to develop research for new projects, emphasizing the significance of the initial stages of artistic inquiry. We recognize the importance of early conceptual development as a foundation for broader creative and intellectual endeavors and aim to nurture this critical phase through our fellowship.\n\nIn addition to the fellowship, we offer a shared workspace open to art professionals and cultural practitioners during weekly community hours. We also partner with like-minded individuals and institutions to host exhibitions, workshops and events that encourage dialogue and collaboration within a broader creative network. Through these initiatives, we strive to create a dynamic environment that encourages experimentation, research, and meaningful artistic exchange."
+    "content": "Initial Research is a nonprofit arts organization based in SoHo, New York City, dedicated to nurturing the early stages of artistic inquiry as a space for collective thinking, experimentation, and care. We cultivate conditions for artists, scholars, and cultural practitioners to develop ideas that engage with the complexity of the world we inhabit.\n\nThe Initial Research Fellowship, our primary program, is a year-long initiative that provides support to five groups each year in a cohort. The fellowship provides time, space, and structural support for individuals exploring questions that may not yet have taken form, foregrounding research as a practice of attention, emergence, and relation. The early phases of artistic research hold transformative potential: not only for generating knowledge but also for building community through curiosity, risk-taking, and a deep love for the world.\n\nIn addition to the fellowship, our space hosts weekly Community Hours and collaborates with artists, practitioners, and institutions on exhibitions, workshops, and gatherings. These programs foster cross-cultural dialogue, encourage interdisciplinary collaboration, and aid in dismantling epistemological binaries. Through this evolving ecosystem, Initial Research invites forms of togetherness where learning is reciprocal and research is generative.\n\nInitial Research是一家位于纽约苏荷区的非营利艺术机构，致力于支持艺术探索的早期阶段，将其构建为集体思考、实验与实践关怀的场域。我们为艺术家、学者及文化实践者创造条件，助力其发展回应当下世界复杂性的创见。\n\n我们的核心项目是为期一年的“研究学者计划”，每期由五个组实践者构成。该计划为探索尚未成型的命题提供时间、空间与体系化支持——将研究视为一种专注力实践、创见生成与关系建构的过程。我们相信艺术研究的初始阶段蕴含变革性力量：不仅能催生新知，更能通过好奇心、冒险精神以及对世界的深切热爱来构建共同体。\n\n学者计划外，我们的苏荷空间每周开放“社区时段”，并与艺术实践者及机构合作策划展览、工作坊与集会。这些项目不仅促进跨文化对话，鼓励学科交叉协作，更致力于解构认识论层面的二元壁垒。Initial Research借持续演化的生态，培育关怀共处之所——学在互惠中生发，知于实践中生成。"
   },
   "vision": {
     "title": "Vision",
     "items": [
-      "To provide a supportive space for nurturing artistic ideas and experiments.",
-      "To cultivate a vibrant hub where meaningful cultural dialogues flourish.",
-      "To build dynamic communities where creatives connect and grow across borders."
+      "We believe artistic inquiry is a powerful space for connection, care, and new ideas.",
+      "We support artists and cultural workers to take risks, ask open questions, and build community across disciplines and cultures.",
+      "We aim to help art shape a more thoughtful, responsive, and connected world."
     ]
   },
   "people": {
@@ -16,11 +16,11 @@
     "team": [
       {
         "name": "Christina Chang",
-        "role": "Founder"
+        "role": "Founder & President "
       },
       {
         "name": "Yuan Fuca",
-        "role": "Founding Artistic Director"
+        "role": "Co-founder & Artistic Director "
       },
       {
         "name": "Huidi Xiang",
@@ -32,6 +32,6 @@
     "title": "Contact",
     "organization": "Initial Research",
     "email": "info@initialresearch.org",
-    "address": "New York City, NY"
+    "address": "41 Wooster Street, Floor 2, New York, NY 10013"
   }
 }
