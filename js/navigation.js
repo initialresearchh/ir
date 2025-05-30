@@ -112,6 +112,7 @@ class ReliableNavigation {
         try {
             await this.attemptNavigation(targetPath);
         } catch (error) {
+            console.error('Navigation error:', error);
             // Final fallback - direct navigation
             window.location.href = targetPath;
         } finally {
@@ -165,42 +166,63 @@ class ReliableNavigation {
     calculateReliablePaths(targetPath) {
         const paths = [];
         
-        // Add most likely paths first
-        switch (this.currentFolder) {
-            case 'root':
-                paths.push(targetPath);
-                paths.push('./' + targetPath);
-                break;
-                
-            case 'program':
-                if (targetPath.startsWith('program/')) {
-                    paths.push(targetPath.replace('program/', ''));
-                    paths.push('./' + targetPath.replace('program/', ''));
-                } else {
-                    paths.push('../' + targetPath);
-                }
-                paths.push(targetPath);
-                break;
-                
-            case 'about':
-                if (targetPath.startsWith('about/')) {
-                    paths.push(targetPath.replace('about/', ''));
-                    paths.push('./' + targetPath.replace('about/', ''));
-                } else {
-                    paths.push('../' + targetPath);
-                }
-                paths.push(targetPath);
-                break;
-                
-            case 'supportus':
-                if (targetPath.startsWith('supportus/')) {
-                    paths.push(targetPath.replace('supportus/', ''));
-                    paths.push('./' + targetPath.replace('supportus/', ''));
-                } else {
-                    paths.push('../' + targetPath);
-                }
-                paths.push(targetPath);
-                break;
+        // Special handling for supportus/supportus.html
+        if (targetPath === 'supportus/supportus.html') {
+            switch (this.currentFolder) {
+                case 'root':
+                    paths.push('supportus/supportus.html');
+                    paths.push('./supportus/supportus.html');
+                    break;
+                case 'program':
+                case 'about':
+                    paths.push('../supportus/supportus.html');
+                    paths.push('supportus/supportus.html');
+                    break;
+                case 'supportus':
+                    paths.push('supportus.html');
+                    paths.push('./supportus.html');
+                    paths.push('supportus/supportus.html');
+                    break;
+            }
+        }
+        // Add most likely paths first for other pages
+        else {
+            switch (this.currentFolder) {
+                case 'root':
+                    paths.push(targetPath);
+                    paths.push('./' + targetPath);
+                    break;
+                    
+                case 'program':
+                    if (targetPath.startsWith('program/')) {
+                        paths.push(targetPath.replace('program/', ''));
+                        paths.push('./' + targetPath.replace('program/', ''));
+                    } else {
+                        paths.push('../' + targetPath);
+                    }
+                    paths.push(targetPath);
+                    break;
+                    
+                case 'about':
+                    if (targetPath.startsWith('about/')) {
+                        paths.push(targetPath.replace('about/', ''));
+                        paths.push('./' + targetPath.replace('about/', ''));
+                    } else {
+                        paths.push('../' + targetPath);
+                    }
+                    paths.push(targetPath);
+                    break;
+                    
+                case 'supportus':
+                    if (targetPath.startsWith('supportus/')) {
+                        paths.push(targetPath.replace('supportus/', ''));
+                        paths.push('./' + targetPath.replace('supportus/', ''));
+                    } else {
+                        paths.push('../' + targetPath);
+                    }
+                    paths.push(targetPath);
+                    break;
+            }
         }
 
         // Add additional fallback paths
@@ -215,12 +237,12 @@ class ReliableNavigation {
     async validatePath(path) {
         try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 300); // Longer timeout for reliability
+            const timeoutId = setTimeout(() => controller.abort(), 500); // Longer timeout
 
             const response = await fetch(path, { 
                 method: 'HEAD',
                 signal: controller.signal,
-                cache: 'no-cache', // Always check fresh
+                cache: 'no-cache',
                 headers: {
                     'Cache-Control': 'no-cache',
                     'Pragma': 'no-cache'
@@ -231,6 +253,8 @@ class ReliableNavigation {
             return response.ok && response.status === 200;
             
         } catch (error) {
+            // Log validation failures for debugging
+            console.log(`Path validation failed for: ${path}`, error.name);
             return false;
         }
     }
@@ -421,8 +445,6 @@ function loadDefaultReliableNav() {
     `;
     
     document.body.insertAdjacentHTML('afterbegin', navHTML);
-    
-    // Footer will be loaded by loadFooterData() function
 }
 
 // Reliable event setup
