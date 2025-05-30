@@ -165,19 +165,22 @@ function setupDetailView() {
             // 为弹窗边框应用随机颜色
             mobilePopupContent.style.borderColor = randomColor;
             
+            // 检查是否有RSVP链接，如果没有则隐藏按钮
+            if (event.rsvpLink && event.rsvpLink.trim() !== '') {
+                mobileRsvpButton.style.display = 'block';
+                // RSVP按钮事件监听器（先移除任何现有的）
+                mobileRsvpButton.replaceWith(mobileRsvpButton.cloneNode(true));
+                const newMobileRsvpButton = document.getElementById('mobile-rsvp-button');
+                newMobileRsvpButton.addEventListener('click', function() {
+                    window.open(event.rsvpLink, '_blank');
+                });
+            } else {
+                mobileRsvpButton.style.display = 'none';
+            }
+            
             // 以弹性布局显示移动弹窗以进行居中
             mobilePopup.style.display = 'flex';
             
-            // RSVP按钮事件监听器（先移除任何现有的）
-            mobileRsvpButton.replaceWith(mobileRsvpButton.cloneNode(true));
-            const newMobileRsvpButton = document.getElementById('mobile-rsvp-button');
-            newMobileRsvpButton.addEventListener('click', function() {
-                if (event.rsvpLink) {
-                    window.open(event.rsvpLink, '_blank');
-                } else {
-                    alert('感谢您对' + event.title + '的RSVP！我们将通过电子邮件发送更多详细信息。');
-                }
-            });
         } else {
             // 桌面详细视图
             const detailTitle = document.getElementById('detail-title');
@@ -200,21 +203,23 @@ function setupDetailView() {
             detailDescription.textContent = event.description;
             detailView.style.backgroundColor = randomColor;
             
+            // 检查是否有RSVP链接，如果没有则隐藏按钮
+            if (event.rsvpLink && event.rsvpLink.trim() !== '') {
+                rsvpButton.style.display = 'block';
+                // RSVP按钮事件监听器（先移除任何现有的）
+                rsvpButton.replaceWith(rsvpButton.cloneNode(true));
+                const newRsvpButton = document.getElementById('rsvp-button');
+                newRsvpButton.addEventListener('click', function() {
+                    window.open(event.rsvpLink, '_blank');
+                });
+            } else {
+                rsvpButton.style.display = 'none';
+            }
+            
             // 显示详细视图
             setTimeout(function() {
                 detailView.style.display = 'flex';
             }, 10);
-            
-            // RSVP按钮事件监听器（先移除任何现有的）
-            rsvpButton.replaceWith(rsvpButton.cloneNode(true));
-            const newRsvpButton = document.getElementById('rsvp-button');
-            newRsvpButton.addEventListener('click', function() {
-                if (event.rsvpLink) {
-                    window.open(event.rsvpLink, '_blank');
-                } else {
-                    alert('感谢您对' + event.title + '的RSVP！我们将通过电子邮件发送更多详细信息。');
-                }
-            });
         }
     }
     
@@ -398,6 +403,14 @@ function setupHoverEffects() {
                     
                     // 设置矩形的背景颜色
                     rectangle.style.backgroundColor = randomColor;
+                    
+                    // 检查是否有RSVP链接，如果没有则隐藏悬停矩形中的按钮
+                    const hoverRsvpButton = rectangle.querySelector('.rsvp-button');
+                    if (event.rsvpLink && event.rsvpLink.trim() !== '') {
+                        hoverRsvpButton.style.display = 'block';
+                    } else {
+                        hoverRsvpButton.style.display = 'none';
+                    }
                     
                     // 显示矩形
                     rectangle.style.opacity = '1';
