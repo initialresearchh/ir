@@ -28,7 +28,7 @@
         {
           "label": "exhibitions",
           "link": "program/exhibition.html",
-          "visible": true
+          "visible": false
         }
       ]
     },
