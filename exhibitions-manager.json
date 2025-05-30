@@ -7,7 +7,7 @@
       "date_range": "April 15 - June 30, 2025",
       "pdf_button_text": "download exhibition pdf",
       "order": 1,
-      "show_in_list": true,
+      "show_in_list": false,
       "title": "Embodied Memories: Tracing Asian Diaspora Through Material Culture",
       "images": [
         {
@@ -44,7 +44,7 @@
       "date_range": "april 11 to april 78",
       "pdf_button_text": "download exhibition pdf",
       "order": 2,
-      "show_in_list": true,
+      "show_in_list": false,
       "title": "the principle of universe is love",
       "images": [
         {
