@@ -404,14 +404,6 @@ function setupHoverEffects() {
                     // 设置矩形的背景颜色
                     rectangle.style.backgroundColor = randomColor;
                     
-                    // 检查是否有RSVP链接，如果没有则隐藏悬停矩形中的按钮
-                    const hoverRsvpButton = rectangle.querySelector('.rsvp-button');
-                    if (event.rsvpLink && event.rsvpLink.trim() !== '') {
-                        hoverRsvpButton.style.display = 'block';
-                    } else {
-                        hoverRsvpButton.style.display = 'none';
-                    }
-                    
                     // 显示矩形
                     rectangle.style.opacity = '1';
                 }
