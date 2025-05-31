@@ -268,6 +268,14 @@
                 
                 html += `
                         </div>
+                `;
+                
+                // Add Additional Content within the Patron Levels section
+                if (data.additional_content && data.additional_content.text) {
+                    html += formatMarkdownText(data.additional_content.text);
+                }
+                
+                html += `
                     </div>
                 `;
             } else if (data.patron_levels && data.patron_levels.levels && data.patron_levels.levels.length > 0) {
@@ -288,16 +296,14 @@
                 html += `
                     </div>
                 `;
+                
+                // Add Additional Content even without title
+                if (data.additional_content && data.additional_content.text) {
+                    html += formatMarkdownText(data.additional_content.text);
+                }
             }
             
-            // FIXED: Additional Content Section (this was missing!)
-            if (data.additional_content && data.additional_content.text) {
-                html += `
-                    <div class="section">
-                        ${formatMarkdownText(data.additional_content.text)}
-                    </div>
-                `;
-            }
+            // REMOVED: Additional Content Section is now part of Patron Levels above
             
             // How to Support Section (legacy - keep for backwards compatibility)
             if (data.how_to_support) {
