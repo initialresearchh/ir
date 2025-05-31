@@ -181,7 +181,7 @@
    
     <!-- Main content -->
     <div class="content" id="support-content">
-        <div class="loading-message"></div>
+        <div class="loading-message">Loading support information...</div>
     </div>
 
  
@@ -248,10 +248,10 @@
             }
             
             // Patron Levels Section
-            if (data.patron_levels) {
+            if (data.patron_levels && data.patron_levels.title) {
                 html += `
                     <div class="section">
-                        <h2>${data.patron_levels.title || 'Patron Levels'}</h2>
+                        <h2>${data.patron_levels.title}</h2>
                         <div class="patron-levels">
                 `;
                 
@@ -270,9 +270,36 @@
                         </div>
                     </div>
                 `;
+            } else if (data.patron_levels && data.patron_levels.levels && data.patron_levels.levels.length > 0) {
+                // If no title but has levels, show without title
+                html += `
+                    <div class="patron-levels">
+                `;
+                
+                data.patron_levels.levels.forEach(level => {
+                    html += `
+                        <div class="patron-level">
+                            <div class="patron-name">${level.name || ''}</div>
+                            <div class="patron-amount">${level.amount || ''}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                    </div>
+                `;
             }
             
-            // How to Support Section
+            // FIXED: Additional Content Section (this was missing!)
+            if (data.additional_content && data.additional_content.text) {
+                html += `
+                    <div class="section">
+                        ${formatMarkdownText(data.additional_content.text)}
+                    </div>
+                `;
+            }
+            
+            // How to Support Section (legacy - keep for backwards compatibility)
             if (data.how_to_support) {
                 html += `
                     <div class="section">
@@ -329,70 +356,9 @@
             const container = document.getElementById('support-content');
             container.innerHTML = `
                 <div class="section">
-                    <h2>Support</h2>
-                    <p>Initial Research is a non-profit organization dedicated to fostering critical dialogue and creative practice. Your support enables us to continue our mission of supporting emerging artists, facilitating meaningful cultural exchanges, and creating spaces for important conversations.</p>
-                    <p>As an independent arts organization, we rely on the generosity of individuals, foundations, and community partners to sustain our programs and initiatives.</p>
-                </div>
-                
-                <div class="section">
-                    <h2>Patron Levels</h2>
-                    <div class="patron-levels">
-                        <div class="patron-level">
-                            <div class="patron-name">Friend</div>
-                            <div class="patron-amount">$100</div>
-                        </div>
-                        <div class="patron-level">
-                            <div class="patron-name">Supporter</div>
-                            <div class="patron-amount">$250</div>
-                        </div>
-                        <div class="patron-level">
-                            <div class="patron-name">Advocate</div>
-                            <div class="patron-amount">$500</div>
-                        </div>
-                        <div class="patron-level">
-                            <div class="patron-name">Patron</div>
-                            <div class="patron-amount">$1,000</div>
-                        </div>
-                        <div class="patron-level">
-                            <div class="patron-name">Sustaining Patron</div>
-                            <div class="patron-amount">$2,500</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <h2>How to Support</h2>
-                    <p><strong>Make a Donation</strong></p>
-                    <p>To make a tax-deductible donation, please contact us at <a href="mailto:support@initialresearch.org">support@initialresearch.org</a> or send a check made payable to "Initial Research" to our mailing address.</p>
-                    
-                    <p><strong>Corporate Partnerships</strong></p>
-                    <p>We welcome partnerships with organizations that share our commitment to supporting arts and culture. Contact us to discuss collaboration opportunities.</p>
-                    
-                    <p><strong>Volunteer</strong></p>
-                    <p>Join our community of volunteers who help make our programs possible. We welcome support with events, administration, and outreach.</p>
-                </div>
-                
-                <div class="section">
-                    <h2>Donor Recognition</h2>
-                    <div class="donor-category">
-                        <h3>Founding Patrons ($2,500+)</h3>
-                        <div class="donor-list">Anonymous, Jane Smith Foundation, The Miller Family Trust</div>
-                    </div>
-                    
-                    <div class="donor-category">
-                        <h3>Sustaining Patrons ($1,000+)</h3>
-                        <div class="donor-list">Alex Chen, Maria Rodriguez, David Park, Sarah Johnson</div>
-                    </div>
-                    
-                    <div class="donor-category">
-                        <h3>Patrons ($500+)</h3>
-                        <div class="donor-list">Lisa Wong, Michael Brown, Jennifer Kim, Robert Davis, Emma Wilson, James Lee</div>
-                    </div>
-                    
-                    <div class="donor-category">
-                        <h3>Supporters ($250+)</h3>
-                        <div class="donor-list">Amy Zhang, Chris Taylor, Nicole Adams, Kevin Liu, Rachel Green, Tom Anderson, Laura Martinez, Sam Cooper</div>
-                    </div>
+                    <h2>Support Us</h2>
+                    <p>Unable to load support information. Please try refreshing the page or contact us directly.</p>
+                    <p>For donation inquiries, please email: <a href="mailto:donate@initialresearch.org">donate@initialresearch.org</a></p>
                 </div>
             `;
         }
