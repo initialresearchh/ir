@@ -2,20 +2,8 @@
   "title": "Calendar - Initial Research",
   "events": [
     {
-      "date": "2025-06-03T11:59:59+08:00",
-      "displayDate": "06.03.25",
-      "timeDisplay": "1:00 PM – 5:00 PM",
-      "rsvpLink": "",
-      "subtitle": "community hours",
-      "title": "Community Hours",
-      "link": "",
-      "id": 1,
-      "image": "",
-      "description": "Join us for our weekly community hours at Initial Research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!"
-    },
-    {
-      "date": "2025-06-10T23:42:57+08:00",
-      "id": 2,
+      "date": "2025-06-10T13:00:57-04:00",
+      "id": -41,
       "title": "Community Hours",
       "subtitle": "community hours",
       "timeDisplay": "1:00 PM – 5:00 PM",
@@ -23,8 +11,8 @@
       "displayDate": "06.10.25"
     },
     {
-      "date": "2025-06-17T00:37:28+08:00",
-      "id": 3,
+      "date": "2025-06-17T13:00:28-04:00",
+      "id": 2,
       "title": "Community Hours",
       "subtitle": "community hours",
       "displayDate": "06.17.25",
@@ -32,8 +20,8 @@
       "description": "Join us for our weekly community hours at Initial Research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!"
     },
     {
-      "date": "2025-06-24T00:39:05+08:00",
-      "id": 4,
+      "date": "2025-06-24T13:00:05-04:00",
+      "id": 3,
       "description": "Join us for our weekly community hours at Initial Research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!",
       "displayDate": "06.24.25",
       "title": "Community Hours",
