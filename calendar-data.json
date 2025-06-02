@@ -4,7 +4,7 @@
     {
       "date": "2025-06-03T11:59:59+08:00",
       "displayDate": "06.03.25",
-      "timeDisplay": "Tuesday, 1:00 PM – 5:00 PM",
+      "timeDisplay": "1:00 PM – 5:00 PM",
       "rsvpLink": "",
       "subtitle": "community hours",
       "title": "Community Hours",
@@ -18,7 +18,7 @@
       "id": 2,
       "title": "Community Hours",
       "subtitle": "community hours",
-      "timeDisplay": "Tuesday, 1:00 PM – 5:00 PM",
+      "timeDisplay": "1:00 PM – 5:00 PM",
       "description": "Join us for our weekly community hours at Initial Research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!",
       "displayDate": "06.10.25"
     },
@@ -28,7 +28,7 @@
       "title": "Community Hours",
       "subtitle": "community hours",
       "displayDate": "06.17.25",
-      "timeDisplay": "Tuesday, 1:00 PM – 5:00 PM",
+      "timeDisplay": "1:00 PM – 5:00 PM",
       "description": "Join us for our weekly community hours at Initial Research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!"
     },
     {
@@ -38,7 +38,7 @@
       "displayDate": "06.24.25",
       "title": "Community Hours",
       "subtitle": "community hours",
-      "timeDisplay": "Tuesday, 1:00 PM – 5:00 PM"
+      "timeDisplay": "1:00 PM – 5:00 PM"
     }
   ]
 }
