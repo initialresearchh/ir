@@ -185,29 +185,29 @@
                 <div class="section" id="mission">
                     <h2>Mission</h2>
                     <p>
-                        We are a nonprofit arts organization based in New York City. Founded by Asian female curators, we committed to supporting early-stage artistic research and fostering cross-cultural exchange through fellowships and thematic public programs.
+                        Initial Research is a nonprofit arts organization based in SoHo, New York City, dedicated to nurturing the early stages of artistic inquiry as a space for collective thinking, experimentation, and care. We cultivate conditions for artists, scholars, and cultural practitioners to develop ideas and practices that engage with the complexities of the world we inhabit.
                     </p>
                     <p>
-                        Our core initiative is a fellowship program that supports five groups of individuals engaged in contemporary cultural discourses and practices. This program provides a dedicated space for artists to develop research for new projects, emphasizing the significance of the initial stages of artistic inquiry. We recognize the importance of early conceptual development as a foundation for broader creative and intellectual endeavors and aim to nurture this critical phase through our fellowship.
+                        The Initial Research Fellowship, our primary program, is a year-long initiative that provides support to five groups each year in a cohort. The fellowship provides time, space, and structural support for individuals exploring questions that may not yet have taken form, foregrounding research as a practice of attention, emergence, and relation. The early phases of artistic research hold transformative potential: not only for generating knowledge but also for building community through curiosity, risk-taking, and a deep love for the world.
                     </p>
                     <p>
-                        In addition to the fellowship, we offer a shared workspace open to art professionals and cultural practitioners during weekly community hours. We also partner with like-minded individuals and institutions to host exhibitions, workshops and events that encourage dialogue and collaboration within a broader creative network. Through these initiatives, we strive to create a dynamic environment that encourages experimentation, research, and meaningful artistic exchange.
+                        In addition to the fellowship, our space hosts weekly Community Hours and collaborates with artists, practitioners, and institutions on exhibitions, workshops, and gatherings. These programs foster cross-cultural dialogue, encourage interdisciplinary collaboration, and aid in dismantling epistemological binaries. Through this evolving ecosystem, Initial Research invites forms of togetherness where learning is reciprocal and research is generative.
                     </p>
                 </div>
 
                 <div class="section">
                     <h2>Vision</h2>
-                    <p>To provide a supportive space for nurturing artistic ideas and experiments.</p>
-                    <p>To cultivate a vibrant hub where meaningful cultural dialogues flourish.</p>
-                    <p>To build dynamic communities where creatives connect and grow across borders.</p>
+                    <p>We believe artistic inquiry is a powerful space for connection, care, and new ideas.</p>
+                    <p>We support artists and cultural workers to take risks, ask open questions, and practice across disciplines and cultures.</p>
+                    <p>We shape a more thoughtful, responsive, and connected world by intuitively building with the community close by.</p>
                 </div>
 
                 <div class="section">
-                    <h2>People</h2>
+                    <h2>Team</h2>
                     <ul class="people-list">
-                        <li>Christina Chang - Founder</li>
-                        <li>Yuan Fuca - Founding Artistic Director</li>
-                        <li>Xiang Huidi - Program Coordinator</li>
+                        <li>Christina Chang - Founder & President</li>
+                        <li>Yuan Fuca - Co-founder & Artistic Director</li>
+                        <li>Huidi Xiang - Program Coordinator</li>
                     </ul>
                 </div>
                 
@@ -215,14 +215,14 @@
                     <h2>Contact</h2>
                     <p>Initial Research</p>
                     <p>Email: <a href="mailto:info@initialresearch.org">info@initialresearch.org</a></p>
-                    <p>Address: New York City, NY</p>
+                    <p>Address: 41 Wooster Street, Floor 2, New York, NY 10013</p>
                 </div>
             `;
             
             // NO AUTO-SCROLL - page loads normally
         }
 
-        // Render mission content from CMS data
+        // Render mission content from CMS data (CLEAN STRUCTURE)
         function renderMission(data) {
             console.log("Rendering mission with data:", data);
             
@@ -234,86 +234,137 @@
                 return;
             }
             
-            // Build HTML content
             let html = '';
             
+            // Collect all sections with order for sorting
+            const allSections = [];
+            
             // Mission section
-            if (data.mission) {
-                html += `
-                    <div class="section" id="mission">
-                        <h2>${data.mission.title || 'Mission'}</h2>`;
-                
-                // Split mission description into paragraphs
-                const missionParagraphs = data.mission.content ? data.mission.content.split('\n\n') : [];
-                missionParagraphs.forEach(paragraph => {
-                    // Process markdown bold format (**text**)
-                    const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    html += `<p>${formattedParagraph}</p>`;
+            if (data.mission && data.mission.visible !== false) {
+                allSections.push({
+                    type: 'mission',
+                    order: data.mission.order || 1,
+                    data: data.mission
                 });
-                
-                html += `</div>`;
             }
             
             // Vision section
-            if (data.vision) {
-                html += `
-                    <div class="section">
-                        <h2>${data.vision.title || 'Vision'}</h2>`;
-                
-                if (data.vision.items && data.vision.items.length > 0) {
-                    data.vision.items.forEach(item => {
-                        html += `<p>${item}</p>`;
-                    });
-                } else if (data.vision.content) {
-                    // Split vision content into paragraphs
-                    const visionParagraphs = data.vision.content.split('\n\n');
-                    visionParagraphs.forEach(paragraph => {
-                        const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                        html += `<p>${formattedParagraph}</p>`;
-                    });
-                }
-                
-                html += `</div>`;
+            if (data.vision && data.vision.visible !== false) {
+                allSections.push({
+                    type: 'vision',
+                    order: data.vision.order || 2,
+                    data: data.vision
+                });
             }
             
             // People section
-            if (data.people) {
-                html += `
-                    <div class="section">
-                        <h2>${data.people.title || 'People'}</h2>
-                        <ul class="people-list">`;
-                
-                if (data.people.team && data.people.team.length > 0) {
-                    data.people.team.forEach(person => {
-                        html += `<li>${person.name}${person.role ? ' - ' + person.role : ''}</li>`;
-                    });
-                } else if (data.people.list && data.people.list.length > 0) {
-                    data.people.list.forEach(person => {
-                        html += `<li>${person}</li>`;
-                    });
-                }
-                
-                html += `</ul></div>`;
+            if (data.people && data.people.visible !== false) {
+                allSections.push({
+                    type: 'people',
+                    order: data.people.order || 3,
+                    data: data.people
+                });
             }
             
             // Contact section
-            if (data.contact) {
-                html += `
-                    <div class="section">
-                        <h2>${data.contact.title || 'Contact'}</h2>`;
+            if (data.contact && data.contact.visible !== false) {
+                allSections.push({
+                    type: 'contact',
+                    order: data.contact.order || 4,
+                    data: data.contact
+                });
+            }
+            
+            // Additional sections
+            if (data.additional_sections && Array.isArray(data.additional_sections)) {
+                data.additional_sections.forEach(section => {
+                    if (section.visible !== false) {
+                        allSections.push({
+                            type: 'additional',
+                            order: section.order || 5,
+                            data: section
+                        });
+                    }
+                });
+            }
+            
+            // Sort sections by order
+            allSections.sort((a, b) => a.order - b.order);
+            
+            // Render each section
+            allSections.forEach(section => {
+                const sectionId = section.type === 'mission' ? ' id="mission"' : '';
+                html += `<div class="section"${sectionId}>`;
+                html += `<h2>${section.data.title || 'Section'}</h2>`;
                 
-                if (data.contact.organization) {
-                    html += `<p>${data.contact.organization}</p>`;
-                }
-                if (data.contact.email) {
-                    html += `<p>Email: <a href="mailto:${data.contact.email}">${data.contact.email}</a></p>`;
-                }
-                if (data.contact.address) {
-                    html += `<p>Address: ${data.contact.address}</p>`;
+                switch (section.type) {
+                    case 'mission':
+                        if (section.data.content) {
+                            // Split into paragraphs and process markdown
+                            const paragraphs = section.data.content.split('\n\n');
+                            paragraphs.forEach(paragraph => {
+                                if (paragraph.trim()) {
+                                    const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                    html += `<p>${formattedParagraph}</p>`;
+                                }
+                            });
+                        }
+                        break;
+                        
+                    case 'vision':
+                        if (section.data.items && section.data.items.length > 0) {
+                            section.data.items.forEach(item => {
+                                html += `<p>${item}</p>`;
+                            });
+                        }
+                        break;
+                        
+                    case 'people':
+                        if (section.data.team && section.data.team.length > 0) {
+                            html += `<ul class="people-list">`;
+                            // Sort team members by member_order
+                            const sortedMembers = section.data.team.sort((a, b) => (a.member_order || 0) - (b.member_order || 0));
+                            sortedMembers.forEach(member => {
+                                html += `<li>${member.name}${member.role ? ' - ' + member.role : ''}</li>`;
+                            });
+                            html += `</ul>`;
+                        }
+                        break;
+                        
+                    case 'contact':
+                        if (section.data.organization) {
+                            html += `<p>${section.data.organization}</p>`;
+                        }
+                        if (section.data.email) {
+                            html += `<p>Email: <a href="mailto:${section.data.email}">${section.data.email}</a></p>`;
+                        }
+                        if (section.data.phone) {
+                            html += `<p>Phone: ${section.data.phone}</p>`;
+                        }
+                        if (section.data.address) {
+                            html += `<p>Address: ${section.data.address}</p>`;
+                        }
+                        if (section.data.additional) {
+                            html += `<p>${section.data.additional}</p>`;
+                        }
+                        break;
+                        
+                    case 'additional':
+                        if (section.data.content) {
+                            // Split into paragraphs and process markdown
+                            const paragraphs = section.data.content.split('\n\n');
+                            paragraphs.forEach(paragraph => {
+                                if (paragraph.trim()) {
+                                    const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                    html += `<p>${formattedParagraph}</p>`;
+                                }
+                            });
+                        }
+                        break;
                 }
                 
                 html += `</div>`;
-            }
+            });
             
             // Set the HTML content
             container.innerHTML = html;
