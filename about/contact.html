@@ -85,6 +85,20 @@
             margin-bottom: 0;
         }
 
+        /* Vision list styling */
+        .vision-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vision-list li {
+            font-size: 17px;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+
         /* Contact links - scoped to content area */
         .content a {
             color: rgb(43, 43, 43);
@@ -127,7 +141,7 @@
     <!-- Footer will be loaded by navigation.js -->
 
     <script>
-        // Load contact data from mission-data.json (same file as other about pages)
+        // Load contact data from mission-data.json (updated for new structure)
         async function loadContactData() {
             try {
                 console.log('Attempting to load contact data from mission-data.json');
@@ -225,7 +239,7 @@
             }, 100);
         }
 
-        // Render contact content from CMS data (all sections like mission page, but focus on contact)
+        // Render contact content from CMS data (NEW FLEXIBLE STRUCTURE)
         function renderContact(data) {
             console.log("Rendering contact with data:", data);
             
@@ -237,85 +251,174 @@
                 return;
             }
             
-            // Build HTML content - ALL sections from mission-data.json
             let html = '';
             
-            // Mission section
-            if (data.mission) {
-                html += `
-                    <div class="section">
-                        <h2>${data.mission.title || 'Mission'}</h2>`;
+            // NEW: Handle flexible sections structure
+            if (data.sections && Array.isArray(data.sections)) {
+                // Sort sections by order
+                const sortedSections = data.sections
+                    .filter(section => section.visible !== false)
+                    .sort((a, b) => (a.order || 0) - (b.order || 0));
                 
-                // Split mission description into paragraphs
-                const missionParagraphs = data.mission.content ? data.mission.content.split('\n\n') : [];
-                missionParagraphs.forEach(paragraph => {
-                    // Process markdown bold format (**text**)
-                    const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                    html += `<p>${formattedParagraph}</p>`;
+                sortedSections.forEach(section => {
+                    if (!section.visible && section.visible !== undefined) return;
+                    
+                    // Add section with appropriate ID for contact section
+                    const sectionId = section.section_type === 'contact' ? ' id="contact"' : '';
+                    html += `<div class="section"${sectionId}>`;
+                    html += `<h2>${section.title || 'Section'}</h2>`;
+                    
+                    // Render different section types
+                    switch (section.section_type) {
+                        case 'mission':
+                            if (section.mission_content) {
+                                // Split into paragraphs and process markdown
+                                const paragraphs = section.mission_content.split('\n\n');
+                                paragraphs.forEach(paragraph => {
+                                    if (paragraph.trim()) {
+                                        const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                        html += `<p>${formattedParagraph}</p>`;
+                                    }
+                                });
+                            }
+                            break;
+                            
+                        case 'vision':
+                            if (section.vision_items && section.vision_items.length > 0) {
+                                section.vision_items.forEach(item => {
+                                    html += `<p>${item.statement || item}</p>`;
+                                });
+                            }
+                            break;
+                            
+                        case 'people':
+                            if (section.team_members && section.team_members.length > 0) {
+                                html += `<ul class="people-list">`;
+                                // Sort team members by member_order
+                                const sortedMembers = section.team_members.sort((a, b) => (a.member_order || 0) - (b.member_order || 0));
+                                sortedMembers.forEach(member => {
+                                    html += `<li>${member.name}${member.role ? ' - ' + member.role : ''}</li>`;
+                                });
+                                html += `</ul>`;
+                            }
+                            break;
+                            
+                        case 'contact':
+                            if (section.contact_info) {
+                                const contact = section.contact_info;
+                                if (contact.organization) {
+                                    html += `<p>${contact.organization}</p>`;
+                                }
+                                if (contact.email) {
+                                    html += `<p>Email: <a href="mailto:${contact.email}">${contact.email}</a></p>`;
+                                }
+                                if (contact.phone) {
+                                    html += `<p>Phone: ${contact.phone}</p>`;
+                                }
+                                if (contact.address) {
+                                    html += `<p>Address: ${contact.address}</p>`;
+                                }
+                                if (contact.additional) {
+                                    html += `<p>${contact.additional}</p>`;
+                                }
+                            }
+                            break;
+                            
+                        case 'custom':
+                            if (section.custom_content) {
+                                // Split into paragraphs and process markdown
+                                const paragraphs = section.custom_content.split('\n\n');
+                                paragraphs.forEach(paragraph => {
+                                    if (paragraph.trim()) {
+                                        const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                                        html += `<p>${formattedParagraph}</p>`;
+                                    }
+                                });
+                            }
+                            break;
+                    }
+                    
+                    html += `</div>`;
                 });
-                
-                html += `</div>`;
-            }
-            
-            // Vision section
-            if (data.vision) {
-                html += `
-                    <div class="section">
-                        <h2>${data.vision.title || 'Vision'}</h2>`;
-                
-                if (data.vision.items && data.vision.items.length > 0) {
-                    data.vision.items.forEach(item => {
-                        html += `<p>${item}</p>`;
-                    });
-                } else if (data.vision.content) {
-                    // Split vision content into paragraphs
-                    const visionParagraphs = data.vision.content.split('\n\n');
-                    visionParagraphs.forEach(paragraph => {
+            } else {
+                // FALLBACK: Handle old structure if it still exists
+                // Mission section
+                if (data.mission) {
+                    html += `
+                        <div class="section">
+                            <h2>${data.mission.title || 'Mission'}</h2>`;
+                    
+                    // Split mission description into paragraphs
+                    const missionParagraphs = data.mission.content ? data.mission.content.split('\n\n') : [];
+                    missionParagraphs.forEach(paragraph => {
+                        // Process markdown bold format (**text**)
                         const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                         html += `<p>${formattedParagraph}</p>`;
                     });
+                    
+                    html += `</div>`;
                 }
                 
-                html += `</div>`;
-            }
-            
-            // People/Team section
-            if (data.people) {
-                html += `
-                    <div class="section">
-                        <h2>${data.people.title || 'Team'}</h2>
-                        <ul class="people-list">`;
-                
-                if (data.people.team && data.people.team.length > 0) {
-                    data.people.team.forEach(person => {
-                        html += `<li>${person.name}${person.role ? ' - ' + person.role : ''}</li>`;
-                    });
-                } else if (data.people.list && data.people.list.length > 0) {
-                    data.people.list.forEach(person => {
-                        html += `<li>${person}</li>`;
-                    });
+                // Vision section
+                if (data.vision) {
+                    html += `
+                        <div class="section">
+                            <h2>${data.vision.title || 'Vision'}</h2>`;
+                    
+                    if (data.vision.items && data.vision.items.length > 0) {
+                        data.vision.items.forEach(item => {
+                            html += `<p>${item}</p>`;
+                        });
+                    } else if (data.vision.content) {
+                        // Split vision content into paragraphs
+                        const visionParagraphs = data.vision.content.split('\n\n');
+                        visionParagraphs.forEach(paragraph => {
+                            const formattedParagraph = paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                            html += `<p>${formattedParagraph}</p>`;
+                        });
+                    }
+                    
+                    html += `</div>`;
                 }
                 
-                html += `</ul></div>`;
-            }
-            
-            // Contact section (with ID for auto-scroll)
-            if (data.contact) {
-                html += `
-                    <div class="section" id="contact">
-                        <h2>${data.contact.title || 'Contact'}</h2>`;
+                // People/Team section
+                if (data.people) {
+                    html += `
+                        <div class="section">
+                            <h2>${data.people.title || 'Team'}</h2>
+                            <ul class="people-list">`;
+                    
+                    if (data.people.team && data.people.team.length > 0) {
+                        data.people.team.forEach(person => {
+                            html += `<li>${person.name}${person.role ? ' - ' + person.role : ''}</li>`;
+                        });
+                    } else if (data.people.list && data.people.list.length > 0) {
+                        data.people.list.forEach(person => {
+                            html += `<li>${person}</li>`;
+                        });
+                    }
+                    
+                    html += `</ul></div>`;
+                }
                 
-                if (data.contact.organization) {
-                    html += `<p>${data.contact.organization}</p>`;
+                // Contact section (with ID for auto-scroll)
+                if (data.contact) {
+                    html += `
+                        <div class="section" id="contact">
+                            <h2>${data.contact.title || 'Contact'}</h2>`;
+                    
+                    if (data.contact.organization) {
+                        html += `<p>${data.contact.organization}</p>`;
+                    }
+                    if (data.contact.email) {
+                        html += `<p>Email: <a href="mailto:${data.contact.email}">${data.contact.email}</a></p>`;
+                    }
+                    if (data.contact.address) {
+                        html += `<p>Address: ${data.contact.address}</p>`;
+                    }
+                    
+                    html += `</div>`;
                 }
-                if (data.contact.email) {
-                    html += `<p>Email: <a href="mailto:${data.contact.email}">${data.contact.email}</a></p>`;
-                }
-                if (data.contact.address) {
-                    html += `<p>Address: ${data.contact.address}</p>`;
-                }
-                
-                html += `</div>`;
             }
             
             // Set the HTML content
@@ -364,6 +467,10 @@
                     });
                 }
             });
+        }
+    </script>
+</body>
+</html>
         }
     </script>
 </body>
