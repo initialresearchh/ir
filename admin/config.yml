@@ -108,7 +108,7 @@ collections:
           - {label: "Page Title", name: "title", widget: "string", default: "The Seasonal (shijie/时节) Dinner at Initial Research", required: true}
           - {label: "Main Description", name: "description", widget: "markdown", required: true, hint: "Main description of the seasonal dinner. Use double line breaks for paragraphs."}
 
-      # UPDATED: Mission & About Page with all sections optional
+      # FIXED: Mission & About Page with Additional Sections at ROOT level
       - name: "mission"
         label: "Mission & About Page"
         file: "mission-data.json"
@@ -117,18 +117,18 @@ collections:
             name: "mission"
             widget: "object"
             required: false
-            collapsed: false
+            collapsed: true
             fields:
               - {label: "Section Title", name: "title", widget: "string", default: "Mission", required: false}
               - {label: "Mission Content", name: "content", widget: "markdown", required: false, hint: "Mission statement content. Use double line breaks for paragraphs. Leave empty to hide this section."}
               - {label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first on the page"}
-              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: false, hint: "Toggle to show or hide this section"}
           
           - label: "Vision Section"
             name: "vision"
             widget: "object"
             required: false
-            collapsed: false
+            collapsed: true
             fields:
               - {label: "Section Title", name: "title", widget: "string", default: "Vision", required: false}
               - label: "Vision Statements"
@@ -138,13 +138,13 @@ collections:
                 hint: "Add your vision statements. Leave empty to hide this section."
                 field: {label: "Vision Statement", name: "statement", widget: "string"}
               - {label: "Display Order", name: "order", widget: "number", default: 2, hint: "Lower numbers appear first on the page"}
-              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: false, hint: "Toggle to show or hide this section"}
           
           - label: "Team Section"
             name: "people"
             widget: "object"
             required: false
-            collapsed: false
+            collapsed: true
             fields:
               - {label: "Section Title", name: "title", widget: "string", default: "Team", required: false}
               - label: "Team Members"
@@ -158,13 +158,13 @@ collections:
                   - {label: "Role/Title", name: "role", widget: "string", required: true}
                   - {label: "Display Order", name: "member_order", widget: "number", default: 1, hint: "Order within the team section"}
               - {label: "Display Order", name: "order", widget: "number", default: 3, hint: "Lower numbers appear first on the page"}
-              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: false, hint: "Toggle to show or hide this section"}
           
           - label: "Contact Section"  
             name: "contact"
             widget: "object"
             required: false
-            collapsed: false
+            collapsed: true
             fields:
               - {label: "Section Title", name: "title", widget: "string", default: "Contact", required: false}
               - {label: "Organization Name", name: "organization", widget: "string", default: "Initial Research", required: false}
@@ -173,20 +173,20 @@ collections:
               - {label: "Address", name: "address", widget: "string", required: false}
               - {label: "Additional Info", name: "additional", widget: "text", required: false}
               - {label: "Display Order", name: "order", widget: "number", default: 4, hint: "Lower numbers appear first on the page"}
-              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: false, hint: "Toggle to show or hide this section"}
 
-              - label: "Additional Sections"
-                name: "additional_sections"
-                widget: "list"
-                required: false
-                collapsed: false
-                hint: "Add any additional custom sections here"
-                summary: "{{fields.title}}"
-                fields:
-                  - {label: "Section Title", name: "title", widget: "string", required: false, hint: "Custom section title"}
-                  - {label: "Section Content", name: "content", widget: "markdown", required: false, hint: "Custom section content. Use **text** for bold and double line breaks for paragraphs. Leave empty to hide this section."}
-                  - {label: "Display Order", name: "order", widget: "number", default: 5, hint: "Lower numbers appear first on the page"}
-                  - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+          - label: "Additional Sections"
+            name: "additional_sections"
+            widget: "list"
+            required: false
+            collapsed: false
+            hint: "Add any additional custom sections here"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Section Title", name: "title", widget: "string", required: false, hint: "Custom section title"}
+              - {label: "Section Content", name: "content", widget: "markdown", required: false, hint: "Custom section content. Use **text** for bold and double line breaks for paragraphs. Leave empty to hide this section."}
+              - {label: "Display Order", name: "order", widget: "number", default: 5, hint: "Lower numbers appear first on the page"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
 
       - name: "supportus"
         label: "Support Us Page"
