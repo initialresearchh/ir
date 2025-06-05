@@ -49,7 +49,7 @@
   "additional_sections": [
     {
       "order": 5,
-      "visible": true,
+      "visible": false,
       "content": "d",
       "title": "d"
     },
