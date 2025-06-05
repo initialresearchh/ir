@@ -48,7 +48,8 @@
       {
         "order": 5,
         "visible": true,
-        "content": "d"
+        "content": "d",
+        "title": "d"
       }
     ]
   },
