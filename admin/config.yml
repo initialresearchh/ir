@@ -175,18 +175,18 @@ collections:
               - {label: "Display Order", name: "order", widget: "number", default: 4, hint: "Lower numbers appear first on the page"}
               - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
 
-          - label: "Additional Sections"
-            name: "additional_sections"
-            widget: "list"
-            required: false
-            collapsed: false
-            hint: "Add any additional custom sections here"
-            summary: "{{fields.title}}"
-            fields:
-              - {label: "Section Title", name: "title", widget: "string", required: true}
-              - {label: "Section Content", name: "content", widget: "markdown", required: true, hint: "Custom section content. Use **text** for bold and double line breaks for paragraphs"}
-              - {label: "Display Order", name: "order", widget: "number", default: 5, hint: "Lower numbers appear first on the page"}
-              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+              - label: "Additional Sections"
+                name: "additional_sections"
+                widget: "list"
+                required: false
+                collapsed: false
+                hint: "Add any additional custom sections here"
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "Section Title", name: "title", widget: "string", required: false, hint: "Custom section title"}
+                  - {label: "Section Content", name: "content", widget: "markdown", required: false, hint: "Custom section content. Use **text** for bold and double line breaks for paragraphs. Leave empty to hide this section."}
+                  - {label: "Display Order", name: "order", widget: "number", default: 5, hint: "Lower numbers appear first on the page"}
+                  - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
 
       - name: "supportus"
         label: "Support Us Page"
