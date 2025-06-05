@@ -108,97 +108,80 @@ collections:
           - {label: "Page Title", name: "title", widget: "string", default: "The Seasonal (shijie/时节) Dinner at Initial Research", required: true}
           - {label: "Main Description", name: "description", widget: "markdown", required: true, hint: "Main description of the seasonal dinner. Use double line breaks for paragraphs."}
 
-      # UPDATED: Mission & About Page with flexible sections
+      # UPDATED: Mission & About Page with clean, separate section managers
       - name: "mission"
         label: "Mission & About Page"
         file: "mission-data.json"
         fields:
-          - label: "Page Sections"
-            name: "sections"
-            widget: "list"
+          - label: "Mission Section"
+            name: "mission"
+            widget: "object"
             required: false
-            hint: "Add, remove, or reorder sections for the Mission & About page"
-            summary: "{{fields.section_type}}: {{fields.title}}"
             fields:
-              - label: "Section Type"
-                name: "section_type"
-                widget: "select"
-                required: true
-                options:
-                  - {label: "Mission", value: "mission"}
-                  - {label: "Vision", value: "vision"}
-                  - {label: "People/Team", value: "people"}
-                  - {label: "Contact", value: "contact"}
-                  - {label: "Custom Text", value: "custom"}
-                hint: "Choose the type of section"
-              
-              - {label: "Section Title", name: "title", widget: "string", required: true, hint: "Title that appears at the top of this section"}
-              
+              - {label: "Section Title", name: "title", widget: "string", default: "Mission", required: true}
+              - {label: "Mission Content", name: "content", widget: "markdown", required: true, hint: "Mission statement content. Use double line breaks for paragraphs."}
               - {label: "Display Order", name: "order", widget: "number", default: 1, hint: "Lower numbers appear first on the page"}
-              
               - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
-              
-              # Mission-specific fields
-              - label: "Mission Content"
-                name: "mission_content"
-                widget: "markdown"
-                required: false
-                hint: "Only for Mission sections - main mission statement content"
-                condition:
-                  field: "section_type"
-                  equals: "mission"
-              
-              # Vision-specific fields  
-              - label: "Vision Items"
-                name: "vision_items"
+          
+          - label: "Vision Section"
+            name: "vision"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Section Title", name: "title", widget: "string", default: "Vision", required: true}
+              - label: "Vision Statements"
+                name: "items"
                 widget: "list"
-                required: false
-                hint: "Only for Vision sections - list of vision statements"
-                condition:
-                  field: "section_type"
-                  equals: "vision"
+                required: true
+                hint: "Add your vision statements"
                 field: {label: "Vision Statement", name: "statement", widget: "string"}
-              
-              # People-specific fields
+              - {label: "Display Order", name: "order", widget: "number", default: 2, hint: "Lower numbers appear first on the page"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+          
+          - label: "Team Section"
+            name: "people"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Section Title", name: "title", widget: "string", default: "Team", required: true}
               - label: "Team Members"
-                name: "team_members"
+                name: "team"
                 widget: "list"
-                required: false
-                hint: "Only for People sections - click 'Add Team Members' to add new team members"
+                required: true
+                hint: "Click 'Add Team Members' to add new team members"
                 summary: "{{fields.name}} - {{fields.role}}"
-                condition:
-                  field: "section_type"
-                  equals: "people"
                 fields:
                   - {label: "Name", name: "name", widget: "string", required: true}
                   - {label: "Role/Title", name: "role", widget: "string", required: true}
                   - {label: "Display Order", name: "member_order", widget: "number", default: 1, hint: "Order within the team section"}
-              
-              # Contact-specific fields
-              - label: "Contact Information"
-                name: "contact_info"
-                widget: "object"
-                required: false
-                hint: "Only for Contact sections"
-                condition:
-                  field: "section_type"
-                  equals: "contact"
-                fields:
-                  - {label: "Organization Name", name: "organization", widget: "string", default: "Initial Research", required: true}
-                  - {label: "Email Address", name: "email", widget: "string", required: true}
-                  - {label: "Phone", name: "phone", widget: "string", required: false}
-                  - {label: "Address", name: "address", widget: "string", required: true}
-                  - {label: "Additional Info", name: "additional", widget: "text", required: false}
-              
-              # Custom section fields
-              - label: "Custom Content"
-                name: "custom_content"
-                widget: "markdown"
-                required: false
-                hint: "Only for Custom sections - any additional content you want to add"
-                condition:
-                  field: "section_type"
-                  equals: "custom"
+              - {label: "Display Order", name: "order", widget: "number", default: 3, hint: "Lower numbers appear first on the page"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+          
+          - label: "Contact Section"  
+            name: "contact"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Section Title", name: "title", widget: "string", default: "Contact", required: true}
+              - {label: "Organization Name", name: "organization", widget: "string", default: "Initial Research", required: true}
+              - {label: "Email Address", name: "email", widget: "string", required: true}
+              - {label: "Phone", name: "phone", widget: "string", required: false}
+              - {label: "Address", name: "address", widget: "string", required: true}
+              - {label: "Additional Info", name: "additional", widget: "text", required: false}
+              - {label: "Display Order", name: "order", widget: "number", default: 4, hint: "Lower numbers appear first on the page"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
+
+          - label: "Additional Sections"
+            name: "additional_sections"
+            widget: "list"
+            required: false
+            hint: "Add any additional custom sections here"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Section Title", name: "title", widget: "string", required: true}
+              - {label: "Section Content", name: "content", widget: "markdown", required: true, hint: "Custom section content. Use **text** for bold and double line breaks for paragraphs"}
+              - {label: "Display Order", name: "order", widget: "number", default: 5, hint: "Lower numbers appear first on the page"}
+              - {label: "Show Section", name: "visible", widget: "boolean", default: true, hint: "Toggle to show or hide this section"}
 
       - name: "supportus"
         label: "Support Us Page"
