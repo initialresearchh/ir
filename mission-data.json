@@ -44,14 +44,7 @@
     "address": "41 Wooster Street, Floor 2, New York, NY 10013",
     "order": 4,
     "visible": true,
-    "additional_sections": [
-      {
-        "order": 5,
-        "visible": true,
-        "title": "b",
-        "content": ""
-      }
-    ]
+    "additional_sections": []
   },
   "additional_sections": [
     {
