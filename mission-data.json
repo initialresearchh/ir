@@ -43,7 +43,14 @@
     "email": "info@initialresearch.org",
     "address": "41 Wooster Street, Floor 2, New York, NY 10013",
     "order": 4,
-    "visible": true
+    "visible": true,
+    "additional_sections": [
+      {
+        "order": 5,
+        "visible": true,
+        "content": "d"
+      }
+    ]
   },
   "additional_sections": [
     {
