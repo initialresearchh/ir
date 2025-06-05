@@ -48,7 +48,7 @@
   "additional_sections": [
     {
       "order": 5,
-      "visible": true,
+      "visible": false,
       "title": "Credit",
       "content": "1"
     }
