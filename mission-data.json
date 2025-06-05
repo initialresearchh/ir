@@ -45,5 +45,12 @@
     "order": 4,
     "visible": true
   },
-  "additional_sections": []
+  "additional_sections": [
+    {
+      "order": 5,
+      "visible": true,
+      "title": "Credit",
+      "content": "1"
+    }
+  ]
 }
