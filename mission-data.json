@@ -49,15 +49,9 @@
   "additional_sections": [
     {
       "order": 5,
-      "visible": false,
+      "visible": true,
       "content": "d",
       "title": "d"
-    },
-    {
-      "order": 6,
-      "visible": false,
-      "title": "Credit",
-      "content": "1"
     }
   ]
 }
