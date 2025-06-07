@@ -32,20 +32,9 @@
         },
         {
           "fellow_title": "",
-          "caption": "Portrait by Maria Baranova",
-          "bio": "Anh Vo is a Vietnamese choreographer and writer working primarily in New York City, with a second base in Hanoi. Their practice fleshes out the body as a vessel for apparitional forces. Their work is situated in the unlikely lineage convergences between Downtown New York experimental performance, Hanoi performance art, and Vietnamese folk ritual practices. Vo is indebted to Miguel Gutierrez's unapologetic queerness and amorphous excess, Moriah Evan's speculative commitment to the depth of interiority, Tehching Hsieh's existential sense of time, and Ngoc Dai's guttural sonic landscape of postwar Vietnam. Their formal training is in Performance Studies, studying with esteemed theorists and practitioners at Brown University (BA) and New York University (MA).",
-          "number": "03",
-          "name": "Anh Vo",
-          "additional_images": [],
-          "id": "anh-vo-2025",
-          "image": "/img/uploads/anh_vo_portraitbymariabaranova.jpg",
-          "image_type": "single"
-        },
-        {
-          "fellow_title": "",
           "caption": "",
           "bio": "te editions is an independent publishing house launched in 2023 by Michael Guo and Kechun Qin. It currently operates in New York and Beijing. te explores the intersection of the arts and humanities, examining historical and contemporary social landscapes through a diversified and microscopic lens. The focus lies on how cultures encounter, collapse, and transform each other within global cultural flows. Driven by \"curatorial thinking on paper\" in the editorial approach, te editions aims to foster new discussions informed by a genuinely interdisciplinary perspective.\n\nIn 2021, te editions launched the first issue of its annual bilingual publication, te magazine. Each issue draws inspiration from current events, developing a theme that encapsulates the thinking sparked by the moment. Researchers and creators from various fields are invited to contribute their work around this central theme. te editions consistently collaborates with artists, scholars, communities, and cultural organizations to expand on existing projects and to envision new ones.",
-          "number": "04",
+          "number": "03",
           "name": "te editions (Michael Guo & Kechun Qin)",
           "additional_images": [
             {
@@ -56,6 +45,17 @@
           "id": "te-editions-2025",
           "image": "/img/uploads/teeditions_kechun_qin.jpg",
           "image_type": "carousel"
+        },
+        {
+          "fellow_title": "",
+          "caption": "Portrait by Maria Baranova",
+          "bio": "Anh Vo is a Vietnamese choreographer and writer working primarily in New York City, with a second base in Hanoi. Their practice fleshes out the body as a vessel for apparitional forces. Their work is situated in the unlikely lineage convergences between Downtown New York experimental performance, Hanoi performance art, and Vietnamese folk ritual practices. Vo is indebted to Miguel Gutierrez's unapologetic queerness and amorphous excess, Moriah Evan's speculative commitment to the depth of interiority, Tehching Hsieh's existential sense of time, and Ngoc Dai's guttural sonic landscape of postwar Vietnam. Their formal training is in Performance Studies, studying with esteemed theorists and practitioners at Brown University (BA) and New York University (MA).",
+          "number": "04",
+          "name": "Anh Vo",
+          "additional_images": [],
+          "id": "anh-vo-2025",
+          "image": "/img/uploads/anh_vo_portraitbymariabaranova.jpg",
+          "image_type": "single"
         },
         {
           "fellow_title": "",
