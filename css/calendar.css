@@ -180,7 +180,7 @@
     max-height: 60vh;
     object-fit: contain;
     margin-bottom: 3vh;
-    z-index: 997;
+   
 }
 
 /* Event date styling - UPDATED FOR LEFT ALIGNMENT WITH FLEX LAYOUT */
@@ -197,7 +197,7 @@
     font-size: 1.2vw;
     margin: 0 0 0.5vh 0;
     font-weight: 300;
-    z-index:999;
+   
 }
 
 /* Time container for grouping date and time */
@@ -227,7 +227,7 @@
     max-height: 60vh;
     object-fit: contain;
     margin-bottom: 3vh;
-    z-index:997;
+    
 }
 
 .hover-rectangle .event-date .time-container {
@@ -240,7 +240,7 @@
     display: block;
     font-size: 20px;
     font-weight: 300;
-    z-index:999;
+   
 }
 
 /* Event description */
