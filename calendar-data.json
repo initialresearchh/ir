@@ -32,6 +32,16 @@
       "image": "/img/uploads/office.jpg"
     },
     {
+      "date": "2025-07-01T13:00:03-04:00",
+      "id": 4,
+      "title": "Community Hours",
+      "subtitle": "community hours",
+      "displayDate": "07.01.25",
+      "timeDisplay": "1:00 - 4:00 PM",
+      "image": "/img/uploads/office.jpg",
+      "description": "Join us for our weekly community hours at initial research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!"
+    },
+    {
       "date": "2025-07-01T16:00:43-04:00",
       "displayDate": "07.01.25",
       "timeDisplay": "4:00 - 5:00 PM ",
@@ -41,16 +51,6 @@
       "id": 5,
       "image": "/img/uploads/con-tra-cave-p.jpg",
       "description": "This artist talk offers a cross-section of Zhang Wenxin’s ongoing research on karst landscapes, highlighting her personal art practice and her collaborative project, *The Con(tra)cave,* with independent researcher Duruo Wang. Drawing on sentient ecology, Daoist cosmology, Geotrauma theory, and Confucian Feng Shui, Zhang explores porous intersections between geological and social terrains. Her journey takes her through limestone quarries in upstate New York, the ethnic karst regions of Southwest China, and Switzerland’s Jura Valley—linking distant sites through their geological synchronicity and cultural resonances."
-    },
-    {
-      "date": "2025-07-01T13:00:03-04:00",
-      "id": 4,
-      "title": "Community Hours",
-      "subtitle": "community hours",
-      "displayDate": "07.01.25",
-      "timeDisplay": "1:00 - 4:00 PM",
-      "image": "/img/uploads/office.jpg",
-      "description": "Join us for our weekly community hours at initial research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello!"
     }
   ]
 }
