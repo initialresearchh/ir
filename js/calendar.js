@@ -160,7 +160,7 @@ function setupDetailView() {
             mobileDetailImage.alt = event.title;
             mobileDetailDate.textContent = formattedDate;
             mobileDetailTime.textContent = event.timeDisplay;
-            mobileDetailDescription.textContent = event.description;
+            mobileDetailDescription.innerHTML = event.description.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>');
             
             // 为弹窗边框应用随机颜色
             mobilePopupContent.style.borderColor = randomColor;
@@ -200,7 +200,7 @@ function setupDetailView() {
             detailImage.alt = event.title;
             detailDate.textContent = formattedDate;
             detailTime.textContent = event.timeDisplay;
-            detailDescription.textContent = event.description;
+            detailDescription.innerHTML = event.description.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>');
             detailView.style.backgroundColor = randomColor;
             
             // 检查是否有RSVP链接，如果没有则隐藏按钮
