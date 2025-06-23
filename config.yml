@@ -63,7 +63,7 @@ collections:
               - {label: "Display Date (MM.DD.YY)", name: "displayDate", widget: "string", required: true, hint: "Format as MM.DD.YY (e.g., 05.20.25)"}
               - {label: "Time Display", name: "timeDisplay", widget: "string", required: true, hint: "e.g., 6pm to 9pm"}
               - {label: "Event Image", name: "image", widget: "image", required: false}
-              - {label: "Description", name: "description", widget: "text", required: true}
+              - {label: "Description", name: "description", widget: "markdown", required: true, hint: "Event description. Use double line breaks for paragraphs."}
               - {label: "RSVP Link", name: "rsvpLink", widget: "string", required: false}
               - {label: "External Link (for past events)", name: "link", widget: "string", required: false}
 
