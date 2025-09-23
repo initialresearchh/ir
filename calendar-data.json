@@ -135,6 +135,26 @@
       "image": "/img/uploads/office.jpg",
       "timeDisplay": "1:00 – 5:00 PM",
       "displayDate": "09.30.2025"
+    },
+    {
+      "date": "2025-10-07T13:00:52-04:00",
+      "id": 14,
+      "title": "Commuinty Hours ",
+      "subtitle": "commuinty hours",
+      "displayDate": "10.07.2025",
+      "timeDisplay": "1:00 – 5:00 PM",
+      "image": "/img/uploads/office.jpg",
+      "description": "Join us for our weekly community hours at initial research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello! "
+    },
+    {
+      "date": "2025-10-14T13:00:53-04:00",
+      "id": 15,
+      "subtitle": "community hours",
+      "title": "Community Hours",
+      "displayDate": "10.15.2025",
+      "description": "Join us for our weekly community hours at initial research's SoHo space. The space is available for co-working, meetings, and conversations with our fellows during weekday programs. Wi-Fi, a growing collection of books, and tea are provided. No RSVP is necessary—just stop by and say hello! ",
+      "timeDisplay": "1:00 – 5:00 PM",
+      "image": "/img/uploads/office.jpg"
     }
   ]
 }
