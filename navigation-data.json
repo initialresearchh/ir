@@ -23,7 +23,7 @@
         {
           "label": "seasonal dinner",
           "link": "program/seasonaldinner.html",
-          "visible": true
+          "visible": false
         },
         {
           "label": "exhibitions",
