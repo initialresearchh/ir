@@ -19,16 +19,6 @@
           "label": "community hours",
           "link": "program/communityhours.html",
           "visible": true
-        },
-        {
-          "label": "seasonal dinner",
-          "link": "program/seasonaldinner.html",
-          "visible": false
-        },
-        {
-          "label": "exhibitions",
-          "link": "program/exhibition.html",
-          "visible": false
         }
       ]
     },
