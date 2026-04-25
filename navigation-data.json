@@ -16,11 +16,6 @@
           "visible": true
         },
         {
-          "label": "community hours",
-          "link": "program/communityhours.html",
-          "visible": true
-        },
-        {
           "visible": false,
           "label": "seasonal dinner",
           "link": "program/seasonaldinner.html"
