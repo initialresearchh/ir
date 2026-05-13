@@ -2,6 +2,20 @@
   "page_title": "Exhibitions",
   "exhibitions": [
     {
+      "show_in_list": true,
+      "order": 1,
+      "pdf_button_text": "download exhibition pdf",
+      "title": "I Split With My Friends, Taylor, and Chris",
+      "date_range": "May 16 - 20, 2026",
+      "slug": "I-Split-With-My-Friends",
+      "images": [
+        {
+          "url": "/img/uploads/sowonposter2.jpeg"
+        }
+      ],
+      "description": "I Split With My Friends, Taylor, and Chris\n   <br>\n   <br>\nAn exhibition by Sowon Kwon’s sculpture class at The Cooper Union\n   <br>\n   <br>\nOpening Reception \n<br>\nMay 15, 2026, 6:30–8 PM\n   <br>\n   <br>\nExhibition Dates\n   <br>\nMay 16–20, 2026, 1–5 PM (Closed Sunday)\n   <br>\n   <br>\nBereket Adamu\n   <br>\nMuneeb Alam\n   <br>\nAgatha Carlson\n   <br>\nDessa Ely\n   <br>\nElla Giallanzo\n   <br>\nSydnie Marshall\n   <br>\nHannah Muallem\n   <br>\nEric Nguyen\n   <br>\nNona Nishigawara\n   <br>\nMauricio Perdomo-Doncel\n   <br>\nGabo Sambar-Lande\n   <br>\n   <br>\n   <br>\n   <br>\nA linguistic paradigm in sculptural practice was a point of departure, as was one Duck-Rabbit, and we went from there.\n   <br>\n   <br>\nTHREE WORDS:\n   <br>\nanachronic grids, strata,\n   <br>\nasemic, topographic, numinous,\n   <br>\nequal-ish subset, misregister,\n   <br>\nreiteration, reiteration, camo,\n   <br>\ncolor, balance, quartet,\n   <br>\nparallax, binocular, afterimage,\n   <br>\npolytheistic, placeholder, metronome,\n   <br>\ndayglo, vulnerable, bonfire,\n   <br>\nbistabile, Saussurean treepaper,\n   <br>\nin, neutral, comma,\n   <br>\npathos, and, bathos,\n   <br>\n   <br>\nAND A QUESTION:\n   <br>\nHow do you recognize when an additional gesture begins to hover, no longer requiring another?\n   <br>\nWhat do the folds hold?\n   <br>\nIs there a relationship between Genzken’s speculative interventions and Michael Asher at the SMMOA (now ICALA)?\n   <br>\nHave you had a chance to look at John Berger’s Another Way of Telling?\n   <br>\nMaria Eichhorn on value?\n   <br>\nAre these viewing apparatuses and if so, what can they help us see that we couldn’t before?\n   <br>\nIf the canopy allows light in, what can grow?\n   <br>\nHave you seen such a beautiful sunset since?\n   <br>\nAre the ears-beak really a hinge?\n   <br>\nDo owls visit you often?\n   <br>\n“Morning, boys, how’s the water?”"
+    },
+    {
       "show_in_list": false,
       "order": 1,
       "pdf_button_text": "download exhibition pdf",
@@ -73,20 +87,6 @@
         }
       ],
       "description": "1﻿231231"
-    },
-    {
-      "show_in_list": true,
-      "order": 1,
-      "pdf_button_text": "download exhibition pdf",
-      "title": "I Split With My Friends, Taylor, and Chris",
-      "date_range": "May 16 - 20, 2025",
-      "slug": "I-Split-With-My-Friends",
-      "images": [
-        {
-          "url": "/img/uploads/sowonposter2.jpeg"
-        }
-      ],
-      "description": "An exhibition by Sowon Kwon’s sculpture class at The Cooper Union\n\nOpening Reception\nMay 15, 2026, 6:30–8 PM\nExhibition Dates\nMay 16–20, 2026, 1-5PM (Sunday closed)\n\nBereket Adamu\nMuneeb Alam\nAgatha Carlson\nDessa Ely\nElla Giallanzo\nSydnie Marshall\nHannah Muallem\nEric Nguyen\nNona Nishigawara\nMauricio Perdomo-Doncel\nGabo Sambar-Lande\n\n\n\nA linguistic paradigm in sculptural practice was a point of departure, as was one Duck-Rabbit, and we went from there.\n\n\nTHREE WORDS:\nanachronic grids, strata,\nasemic, topographic, numinous,\nequal-ish subset, misregister,\nreiteration, reiteration, camo,\ncolor, balance, quartet,\nparallax, binocular, afterimage,\npolytheistic, placeholder, metronome,\ndayglo, vulnerable, bonfire,\nbistabile, Saussurean treepaper,\nin, neutral, comma,\npathos, and, bathos,\n\n\nAND A QUESTION:\nHow do you recognize when an additional gesture begins to hover, no longer requiring another?\nWhat do the folds hold?\nIs there a relationship between Genzken’s speculative interventions and Michael Asher at the SMMOA (now ICALA)?\nHave you had a chance to look at John Berger’s Another Way of Telling?\nMaria Eichhorn on value?\nAre these viewing apparatuses and if so, what can they help us see that we couldn’t before?\nIf the canopy allows light in, what can grow?\nHave you seen such a beautiful sunset since?\nAre the ears-beak really a hinge?\nDo owls visit you often?\n“Morning, boys, how’s the water?”\n\n"
     }
   ]
 }
