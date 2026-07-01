@@ -2,7 +2,7 @@
   "page_title": "Exhibitions",
   "exhibitions": [
     {
-      "show_in_list": true,
+      "show_in_list": false,
       "order": 1,
       "pdf_button_text": "download exhibition pdf",
       "title": "I Split With My Friends, Taylor, and Chris",
