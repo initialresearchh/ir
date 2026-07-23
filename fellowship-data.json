@@ -1,12 +1,12 @@
 {
-  "title": "Fellowship - Inaugural Cohort",
+  "title": "Fellowship - 2026/2027 Cohort",
   "heading": "Fellowship",
   "intro": "initial research is committed to supporting the early stages of artistic inquiry. This commitment is embodied in our core program—the Initial Research Fellowship—which offers five groups each year the time, space, and support to pursue self-directed projects. Fellows explore open-ended questions and develop their work over the course of a year, grounded in curiosity, care, and shared learning.",
   "cohorts": [
     {
       "cohort_title": "2025/2026 Inaugural Cohort",
       "order": 1,
-      "show_cohort": true,
+      "show_cohort": false,
       "fellows": [
         {
           "fellow_title": "",
