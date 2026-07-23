@@ -4,8 +4,24 @@
   "intro": "initial research is committed to supporting the early stages of artistic inquiry. This commitment is embodied in our core program—the Initial Research Fellowship—which offers five groups each year the time, space, and support to pursue self-directed projects. Fellows explore open-ended questions and develop their work over the course of a year, grounded in curiosity, care, and shared learning.",
   "cohorts": [
     {
-      "cohort_title": "2025/2026 Inaugural Cohort",
+      "cohort_title": "2026/2027 Cohort",
       "order": 1,
+      "show_cohort": false,
+      "fellows": [
+        {
+          "image_type": "single",
+          "number": "01",
+          "name": "01",
+          "id": "01",
+          "bio": "0﻿1",
+          "fellow_title": "10",
+          "image": "/img/uploads/brucesilverstein-constantin-br-ncu-i-endless-column-in-edward-steichen-s-garden-at-voulangis-1932.jpg"
+        }
+      ]
+    },
+    {
+      "cohort_title": "2025/2026 Inaugural Cohort",
+      "order": 2,
       "show_cohort": false,
       "fellows": [
         {
@@ -67,22 +83,6 @@
           "id": "yu-ji-bhkm-2025",
           "image": "/img/uploads/yujiandbhkm.jpg",
           "image_type": "single"
-        }
-      ]
-    },
-    {
-      "cohort_title": "2026/2027 Cohort",
-      "order": 2,
-      "show_cohort": false,
-      "fellows": [
-        {
-          "image_type": "single",
-          "number": "01",
-          "name": "01",
-          "id": "01",
-          "bio": "0﻿1",
-          "fellow_title": "10",
-          "image": "/img/uploads/brucesilverstein-constantin-br-ncu-i-endless-column-in-edward-steichen-s-garden-at-voulangis-1932.jpg"
         }
       ]
     }
