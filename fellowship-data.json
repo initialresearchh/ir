@@ -5,17 +5,18 @@
   "cohorts": [
     {
       "cohort_title": "2026/2027 Cohort",
-      "order": 1,
-      "show_cohort": false,
+      "order": -6,
+      "show_cohort": true,
       "fellows": [
         {
           "image_type": "single",
           "number": "01",
-          "name": "01",
-          "id": "01",
-          "bio": "0﻿1",
-          "fellow_title": "10",
-          "image": "/img/uploads/brucesilverstein-constantin-br-ncu-i-endless-column-in-edward-steichen-s-garden-at-voulangis-1932.jpg"
+          "name": "Andrew Yong Hoon Lee",
+          "id": "Andrew-Yong-Hoon-Lee-2026",
+          "bio": "Andrew Yong Hoon Lee is a multidisciplinary artist, musician, and composer. He approaches collaboration as methodology, using collective processes to create work that explores the poetic, political, and philosophical possibilities of light, space, and sound. Through installations, performances, moving-image works, and compositions, he examines how relationships between media generate affective and sensory experience. His work has been presented at the 13th edition of the Gothenburg International Biennial for Contemporary Art, Center for Performance Research, Staatliche Kunsthalle Baden-Baden, The Stone, The Poetry Project, Vancouver Art Gallery, Ann Arbor Film Festival, Fridman Gallery NY, and others. As a composer working between contemporary art and cinema, he has released recordings, scored feature films and documentaries, and performed internationally. Lee holds a BA from Simon Fraser University and an MFA from Milton Avery Graduate School of the Arts at Bard College, and teaches at Parsons School of Design, The New School in New York.",
+          "fellow_title": "",
+          "image": "/img/uploads/andrew-yong-hoon-lee-by-mackenzie-walker_2026.jpg",
+          "caption": "Portrait by Mackenzie Walker"
         }
       ]
     },
