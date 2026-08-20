@@ -17,6 +17,15 @@
           "fellow_title": "",
           "image": "/img/uploads/andrew-yong-hoon-lee-by-mackenzie-walker_2026.jpg",
           "caption": "Portrait by Mackenzie Walker"
+        },
+        {
+          "image_type": "single",
+          "number": "02",
+          "name": "Amiko Li",
+          "id": "Amiko-Li-2026",
+          "bio": "Amiko Li is an interdisciplinary artist who translates everyday stories and encounters into film, installation, and performance to explore and contextualize underlying complexities and themes such as intimacy, waiting, and value.",
+          "image": "/img/uploads/_dsc6681-copy.jpg",
+          "caption": "Portrait by Kai Wai Wong"
         }
       ]
     },
