@@ -5,7 +5,7 @@
   "cohorts": [
     {
       "cohort_title": "2026/2027 Cohort",
-      "order": -6,
+      "order": 1,
       "show_cohort": true,
       "fellows": [
         {
