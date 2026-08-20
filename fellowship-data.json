@@ -26,6 +26,31 @@
           "bio": "Amiko Li is an interdisciplinary artist who translates everyday stories and encounters into film, installation, and performance to explore and contextualize underlying complexities and themes such as intimacy, waiting, and value.",
           "image": "/img/uploads/_dsc6681-copy.jpg",
           "caption": "Portrait by Kai Wai Wong"
+        },
+        {
+          "image_type": "single",
+          "number": "03",
+          "name": "Doreen Chan",
+          "id": "Doreen-Chan-2026",
+          "bio": "Doreen Chan is a Hong Kong-born, New York-based mixed-media artist whose practice focuses on social practice. She re-examines the tensions between interpersonal relationships and well-being through personal and collective memory. Working site-specifically across image-making, sculpture, installation, public programs, and virtual projects, she frequently collaborates with a wide range of individuals. Chan's current research explores the relationships between inherited neurodivergence, well-being, family memory, and migration.",
+          "image": "/img/uploads/doreen-chan_portrait_2026.jpg"
+        },
+        {
+          "image_type": "single",
+          "number": "04",
+          "bio": "Grace Villamil is an interdisciplinary artist working with sound, performance, imagery, and embodied archives. Her practice attends to how infrastructures of language, noise, sport, and pedagogy shape listening over time. Drawing from heritage: basketball, karaoke culture and environmental sound, she develops experimental approaches to listening that resist pitch discipline, virtuosity, and assimilation.",
+          "name": "Grace Villamil",
+          "id": "Grace-Villamil-2026",
+          "image": "/img/uploads/grace-villamil-ir.png"
+        },
+        {
+          "image_type": "single",
+          "number": "05",
+          "name": "Konantü (Courtney Smith & Iván Navarro)",
+          "id": "Konantü-2026",
+          "bio": "Konantü is an experimental collective practice conceived and conducted by artists Courtney Smith and Iván Navarro. Born in Brooklyn but with deep roots in South America, Konantü is defined by an ongoing series of live works performed by small groups of volunteer participants, united in the execution of a common task. Developed as intricate spatial, social, or linguistic choreographies, the works activate intuitive coordination and creative solidarity as participants collectively navigate the constraints and possibilities of an underlying logic.",
+          "image": "/img/uploads/konantü-portrait.jpg",
+          "caption": "Photo by Thelma Garcia"
         }
       ]
     },
