@@ -24,7 +24,7 @@
           "name": "Amiko Li",
           "id": "Amiko-Li-2026",
           "bio": "Amiko Li is an interdisciplinary artist who translates everyday stories and encounters into film, installation, and performance to explore and contextualize underlying complexities and themes such as intimacy, waiting, and value.",
-          "image": "/img/uploads/_dsc6681-copy.jpg",
+          "image": "/img/uploads/_dsc6795-copy.jpg",
           "caption": "Portrait by Kai Wai Wong"
         },
         {
@@ -49,8 +49,17 @@
           "name": "Konantü (Courtney Smith & Iván Navarro)",
           "id": "Konantü-2026",
           "bio": "Konantü is an experimental collective practice conceived and conducted by artists Courtney Smith and Iván Navarro. Born in Brooklyn but with deep roots in South America, Konantü is defined by an ongoing series of live works performed by small groups of volunteer participants, united in the execution of a common task. Developed as intricate spatial, social, or linguistic choreographies, the works activate intuitive coordination and creative solidarity as participants collectively navigate the constraints and possibilities of an underlying logic.",
-          "image": "/img/uploads/konantü-portrait.jpg",
-          "caption": "Photo by Thelma Garcia"
+          "image": "/img/uploads/cs-in-portrait.jpg",
+          "caption": "Portrait by Thelma Garcia"
+        },
+        {
+          "image_type": "single",
+          "number": "06",
+          "name": "Rujuta Rao",
+          "id": "Rujuta-Rao-2026",
+          "bio": "Rujuta Rao works across book art, beverage, sculpture, installation, and social practice, alongside conceptual and functional garments through her gender expansive clothing line RUGA. Research-driven and personal, her work uses material investigation to explore migration, place, family history, and hospitality. Rao is curious about how artworks can transform into spaces for gathering, creating conditions for connection and dialogue between the artist and audience.",
+          "image": "/img/uploads/rujuta-rao_initial-research_portrait.jpg",
+          "caption": "Minibar, Photo by Keith Fernandes "
         }
       ]
     },
