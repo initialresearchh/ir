@@ -11,6 +11,14 @@
         {
           "image_type": "single",
           "number": "01",
+          "name": "Ami Lien",
+          "id": "Ami-Lien-2026",
+          "bio": ".",
+          "image": "/img/uploads/office.jpg"
+        },
+        {
+          "image_type": "single",
+          "number": "02",
           "name": "Amiko Li",
           "id": "Amiko-Li-2026",
           "bio": "Amiko Li is an interdisciplinary artist who translates everyday stories and encounters into film, installation, and performance to explore and contextualize underlying complexities and themes such as intimacy, waiting, and value.",
@@ -19,7 +27,7 @@
         },
         {
           "image_type": "single",
-          "number": "02",
+          "number": "03",
           "name": "Andrew Yong Hoon Lee",
           "id": "Andrew-Yong-Hoon-Lee-2026",
           "bio": "Andrew Yong Hoon Lee is a multidisciplinary artist, musician, and composer. He approaches collaboration as methodology, using collective processes to create work that explores the poetic, political, and philosophical possibilities of light, space, and sound. Through installations, performances, moving-image works, and compositions, he examines how relationships between media generate affective and sensory experience. \n\n\nHis work has been presented at the 13th edition of the Gothenburg International Biennial for Contemporary Art; Carpenter Center for the Visual Arts at Harvard University, Cambridge; The Migros Museum für Gegenwartskunst, Zurich; Musée d’art et d’histoire, Geneva; Center for Performance Research, New York; Staatliche Kunsthalle, Baden-Baden; The Stone, New York; The Poetry Project, New York; Achtung Cinema, Paris; Kinoskop International Analog Film Festival, Belgrade; Vancouver Art Gallery; The International Symposium on Electronic Arts, Vancouver; Ann Arbor Film Festival; Fridman Gallery, New York, Radio Alhara, Bethlehem; among others. \n\n\nAs a composer working between contemporary art and cinema, he has released recordings, scored feature films and documentaries, and performed internationally. \nLee holds a BA from Simon Fraser University and an MFA from Milton Avery Graduate School of the Arts at Bard College, and teaches at Parsons School of Design, The New School in New York.",
@@ -29,7 +37,7 @@
         },
         {
           "image_type": "single",
-          "number": "03",
+          "number": "04",
           "name": "Doreen Chan",
           "id": "Doreen-Chan-2026",
           "bio": "Doreen Chan is a Hong Kong-born, New York-based mixed-media artist whose practice focuses on social practice. She re-examines the tensions between interpersonal relationships and well-being through personal and collective memory. Working site-specifically across image-making, sculpture, installation, public programs, and virtual projects, she frequently collaborates with a wide range of individuals. Chan's current research explores the relationships between inherited neurodivergence, well-being, family memory, and migration.",
@@ -37,7 +45,7 @@
         },
         {
           "image_type": "single",
-          "number": "04",
+          "number": "05",
           "bio": "Grace Villamil is an interdisciplinary artist working with sound, performance, imagery, and embodied archives. Her practice attends to how infrastructures of language, noise, sport, and pedagogy shape listening over time. Drawing from heritage: basketball, karaoke culture and environmental sound, she develops experimental approaches to listening that resist pitch discipline, virtuosity, and assimilation. Presentations include Amant (NYC), Performance Space (NY), Elbphilharmonie Kleiner Saal (DE) and Kiosk Radio (BXL). Her discography includes releases on Superpang (IT), Notice Recordings (NY), and Flaming Pines (UK, forthcoming). Her work has been supported by Morphine Records (DE), Fridman Gallery (NYC), and Black Mountain College Museum, including community projects with IONE and the Pauline Oliveros Foundation.",
           "name": "Grace Villamil",
           "id": "Grace-Villamil-2026",
@@ -46,7 +54,7 @@
         },
         {
           "image_type": "single",
-          "number": "05",
+          "number": "06",
           "name": "Konantü (Courtney Smith & Iván Navarro)",
           "id": "Konantü-2026",
           "bio": "Konantü is an experimental collective practice conceived and conducted by artists Courtney Smith and Iván Navarro. Born in Brooklyn but with deep roots in South America, Konantü is defined by an ongoing series of live works performed by small groups of volunteer participants, united in the execution of a common task. Developed as intricate spatial, social, or linguistic choreographies, the works activate intuitive coordination and creative solidarity as participants collectively navigate the constraints and possibilities of an underlying logic.",
@@ -55,7 +63,7 @@
         },
         {
           "image_type": "single",
-          "number": "06",
+          "number": "07",
           "name": "Rujuta Rao",
           "id": "Rujuta-Rao-2026",
           "bio": "Rujuta Rao works across book art, beverage, sculpture, installation, and social practice, alongside conceptual and functional garments through her gender expansive clothing line RUGA. Research-driven and personal, her work uses material investigation to explore migration, place, family history, and hospitality. Rao is curious about how artworks can transform into spaces for gathering, creating conditions for connection and dialogue between the artist and audience.",
@@ -64,7 +72,7 @@
         },
         {
           "image_type": "single",
-          "number": "07",
+          "number": "08",
           "name": "wei",
           "id": "wei-2025",
           "bio": "wei’s practice explores Otherness through print media, objects, video, sound, and movement, using these forms as material and conceptual sites of inquiry. Engaging with the intertwined cartographies of Queerness and Foreignness, their work examines the \"betwixt and between\" as a condition shaped by homogeneous temporalities and fleeting moments of togetherness.",
